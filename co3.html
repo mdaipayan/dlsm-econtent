@@ -122,6 +122,30 @@
         <h2 id="loop-closure">Loop Closure</h2>
         <p>To verify the accuracy of a control traverse, surveyors use the <strong>loop closure</strong> technique: the traverse starts and ends at the same known control point (or two known points). Since the true coordinates of the start/end point are known, any difference between the computed and known values — the <strong>misclosure error</strong> — reveals the accumulated error in the survey. This misclosure is then distributed proportionally across all traverse stations (e.g. by the Bowditch/compass rule) to produce adjusted, self-consistent coordinates.</p>
 
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 220" role="img" aria-label="Diagram of a closed traverse loop returning to its start point, with a small misclosure error vector shown at the closing point">
+            <polygon points="300,30 480,110 420,190 180,190 120,110" fill="none" stroke="var(--color-primary)" stroke-width="1.6"/>
+            <g fill="var(--color-primary)">
+              <circle cx="300" cy="30" r="5"/>
+              <circle cx="480" cy="110" r="5"/>
+              <circle cx="420" cy="190" r="5"/>
+              <circle cx="180" cy="190" r="5"/>
+              <circle cx="120" cy="110" r="5"/>
+            </g>
+            <g font-size="9" fill="var(--color-text-muted)" text-anchor="middle">
+              <text x="300" y="18">Known Control Point</text>
+              <text x="500" y="105">St.2</text>
+              <text x="430" y="208">St.3</text>
+              <text x="170" y="208">St.4</text>
+              <text x="100" y="105">St.5</text>
+            </g>
+            <circle cx="306" cy="36" r="4" fill="var(--color-amber)"/>
+            <line x1="300" y1="30" x2="306" y2="36" stroke="var(--color-amber)" stroke-width="2"/>
+            <text x="340" y="55" font-size="10" fill="var(--color-amber)" font-weight="700">misclosure error</text>
+          </svg>
+          <figcaption>A closed traverse returns to its known starting point; the small gap between the computed and true closing position is the misclosure, distributed across all stations during adjustment.</figcaption>
+        </figure>
+
         <h2 id="advantages">Advantages Over Standalone GPS</h2>
         <table class="data-table">
           <thead><tr><th>Parameter</th><th>Standalone GPS</th><th>DGPS</th></tr></thead>
@@ -177,7 +201,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>Department of Civil Engineering · B.Tech. Semester VIII</span>
+      <span>Prepared by Daipayan Mandal · Department of Civil Engineering</span>
       <span>Subject Code: BTCVE802T</span>
     </div>
   </div>

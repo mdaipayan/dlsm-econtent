@@ -77,6 +77,40 @@
           <div class="error-item"><span class="tag">Accuracy standards</span><p>Positional accuracy requirements (e.g. National Map Accuracy Standards) that a map must meet for its intended use.</p></div>
         </div>
 
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 200" role="img" aria-label="Diagram comparing a curved globe with a map projection flattened onto a plane, and a scale bar showing ground versus map distance">
+            <g>
+              <ellipse cx="140" cy="100" rx="75" ry="75" fill="var(--color-primary-highlight)" stroke="var(--color-primary)" stroke-width="1.4"/>
+              <path d="M65 100 Q140 60 215 100" fill="none" stroke="var(--color-primary)" stroke-width="1" opacity="0.6"/>
+              <path d="M65 100 Q140 140 215 100" fill="none" stroke="var(--color-primary)" stroke-width="1" opacity="0.6"/>
+              <line x1="140" y1="25" x2="140" y2="175" stroke="var(--color-primary)" stroke-width="1" opacity="0.6"/>
+              <text x="140" y="195" font-size="10" text-anchor="middle" fill="var(--color-text-muted)">Curved Earth (globe)</text>
+            </g>
+            <g stroke="var(--color-text-faint)" stroke-width="1.6" fill="none" marker-end="url(#arr3)">
+              <path d="M225 100 H 275"/>
+            </g>
+            <defs>
+              <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="var(--color-text-faint)"/>
+              </marker>
+            </defs>
+            <text x="250" y="90" font-size="9" text-anchor="middle" fill="var(--color-text-muted)">projection</text>
+            <g>
+              <rect x="290" y="55" width="150" height="90" rx="6" fill="var(--color-surface)" stroke="var(--color-border)"/>
+              <path d="M290 90 Q 365 70 440 95" stroke="var(--color-primary)" stroke-width="1" fill="none" opacity="0.6"/>
+              <path d="M290 115 Q 365 130 440 110" stroke="var(--color-primary)" stroke-width="1" fill="none" opacity="0.6"/>
+              <line x1="365" y1="55" x2="365" y2="145" stroke="var(--color-primary)" stroke-width="1" opacity="0.6"/>
+              <text x="365" y="165" font-size="10" text-anchor="middle" fill="var(--color-text-muted)">Flat map (projected)</text>
+            </g>
+            <g>
+              <rect x="470" y="85" width="110" height="30" rx="4" fill="var(--color-amber-highlight)" stroke="var(--color-amber)"/>
+              <text x="525" y="104" font-size="9" text-anchor="middle" fill="var(--color-amber)">1 cm = 100 m</text>
+              <text x="525" y="130" font-size="9" text-anchor="middle" fill="var(--color-text-muted)">Map scale</text>
+            </g>
+          </svg>
+          <figcaption>A map projection flattens the curved Earth onto a plane; the scale then relates a distance on that flat map back to the true ground distance.</figcaption>
+        </figure>
+
         <h2 id="software">Categories of Mapping Software</h2>
         <table class="data-table">
           <thead><tr><th>Category</th><th>Purpose</th><th>Examples</th></tr></thead>
@@ -185,7 +219,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>Department of Civil Engineering · B.Tech. Semester VIII</span>
+      <span>Prepared by Daipayan Mandal · Department of Civil Engineering</span>
       <span>Subject Code: BTCVE802T</span>
     </div>
   </div>

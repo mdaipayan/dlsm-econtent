@@ -86,6 +86,41 @@
         </ol>
         <p>This digital chain removes repeated manual transcription — a major source of error in traditional surveying — and makes the resulting data directly usable in design and GIS software.</p>
 
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 170" role="img" aria-label="Flow diagram of the three-stage digital survey workflow: data capture, transfer and processing, and data output">
+            <g font-size="10" fill="var(--color-text)" text-anchor="middle">
+              <g>
+                <rect x="20" y="55" width="150" height="60" rx="10" fill="var(--color-primary-highlight)" stroke="var(--color-primary)"/>
+                <text x="95" y="80" fill="var(--color-primary)" font-weight="700">1. Data Capture</text>
+                <text x="95" y="97" fill="var(--color-text-muted)" font-size="9">Total Station / GPS reads</text>
+                <text x="95" y="109" fill="var(--color-text-muted)" font-size="9">angles, distances, coordinates</text>
+              </g>
+              <g>
+                <rect x="225" y="55" width="150" height="60" rx="10" fill="var(--color-surface)" stroke="var(--color-border)"/>
+                <text x="300" y="80" font-weight="700">2. Transfer &amp; Process</text>
+                <text x="300" y="97" fill="var(--color-text-muted)" font-size="9">Download to computer;</text>
+                <text x="300" y="109" fill="var(--color-text-muted)" font-size="9">software corrects &amp; adjusts</text>
+              </g>
+              <g>
+                <rect x="430" y="55" width="150" height="60" rx="10" fill="var(--color-amber-highlight)" stroke="var(--color-amber)"/>
+                <text x="505" y="80" fill="var(--color-amber)" font-weight="700">3. Data Output</text>
+                <text x="505" y="97" fill="var(--color-text-muted)" font-size="9">Digital maps, contour</text>
+                <text x="505" y="109" fill="var(--color-text-muted)" font-size="9">plans, 3D terrain models</text>
+              </g>
+            </g>
+            <g stroke="var(--color-text-faint)" stroke-width="1.6" fill="none" marker-end="url(#arr1)">
+              <path d="M170 85 H225"/>
+              <path d="M375 85 H430"/>
+            </g>
+            <defs>
+              <marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="var(--color-text-faint)"/>
+              </marker>
+            </defs>
+          </svg>
+          <figcaption>The three-stage digital survey workflow: field capture, office processing, and final digital output.</figcaption>
+        </figure>
+
         <h2 id="control-points">Control Points</h2>
         <p>Every survey, however small, is built on a framework of <strong>control points</strong> — points whose horizontal position and/or elevation are known with high precision and which act as fixed references for all subsequent detail measurements.</p>
         <div class="error-grid">
@@ -176,7 +211,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>Department of Civil Engineering · B.Tech. Semester VIII</span>
+      <span>Prepared by Daipayan Mandal · Department of Civil Engineering</span>
       <span>Subject Code: BTCVE802T</span>
     </div>
   </div>
