@@ -80,10 +80,44 @@
           <div class="error-item"><span class="tag">Vertical control</span><p>Fixes a point's height (Z) above a reference level.</p></div>
         </div>
 
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 190" role="img" aria-label="Simple three-step diagram: capture, process, output">
+            <g font-family="var(--font-body)">
+              <circle cx="100" cy="70" r="46" fill="var(--color-primary-highlight)" stroke="var(--color-primary)" stroke-width="2"/>
+              <text x="100" y="63" text-anchor="middle" font-size="22" font-weight="700" fill="var(--color-primary)">1</text>
+              <text x="100" y="86" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-primary)">CAPTURE</text>
+              <text x="100" y="140" text-anchor="middle" font-size="11" fill="var(--color-text-muted)">Take the reading with</text>
+              <text x="100" y="156" text-anchor="middle" font-size="11" fill="var(--color-text-muted)">an instrument</text>
+
+              <circle cx="300" cy="70" r="46" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="2"/>
+              <text x="300" y="63" text-anchor="middle" font-size="22" font-weight="700" fill="var(--color-text)">2</text>
+              <text x="300" y="86" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">PROCESS</text>
+              <text x="300" y="140" text-anchor="middle" font-size="11" fill="var(--color-text-muted)">Correct and check it</text>
+              <text x="300" y="156" text-anchor="middle" font-size="11" fill="var(--color-text-muted)">on a computer</text>
+
+              <circle cx="500" cy="70" r="46" fill="var(--color-amber-highlight)" stroke="var(--color-amber)" stroke-width="2"/>
+              <text x="500" y="63" text-anchor="middle" font-size="22" font-weight="700" fill="var(--color-amber)">3</text>
+              <text x="500" y="86" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-amber)">OUTPUT</text>
+              <text x="500" y="140" text-anchor="middle" font-size="11" fill="var(--color-text-muted)">Draw the final map</text>
+              <text x="500" y="156" text-anchor="middle" font-size="11" fill="var(--color-text-muted)">or plan</text>
+            </g>
+            <g stroke="var(--color-text-faint)" stroke-width="2" fill="none" marker-end="url(#slowarr1)">
+              <path d="M150 70 H250"/>
+              <path d="M350 70 H450"/>
+            </g>
+            <defs>
+              <marker id="slowarr1" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="var(--color-text-faint)"/>
+              </marker>
+            </defs>
+          </svg>
+          <figcaption>Every digital survey follows just three steps — remember them in order: Capture → Process → Output.</figcaption>
+        </figure>
+
         <div class="step-block">
           <span class="step-label">Guided worksheet</span>
           <ol>
-            <li>Look at the workflow diagram on the <a href="co1.html#control-points">CO1 page</a> and write, in your own words, what happens in each of the three stages.</li>
+            <li>Look at the workflow diagram above and write, in your own words, what happens in each of the three stages.</li>
             <li>Copy the definitions of "control point," "horizontal control" and "vertical control" from your notes, then find one real example of each on your own campus.</li>
             <li>Ask a classmate or your teacher to check your answers before moving to the next section.</li>
             <li>Attempt three short one-line questions from the solved example sheet given in class.</li>
@@ -110,10 +144,34 @@
           <div class="error-item"><span class="tag">User segment</span><p>Your GPS receiver, which listens to the signals.</p></div>
         </div>
 
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 240" role="img" aria-label="Simplified trilateration diagram: three satellites, each with a dashed distance circle, crossing at the receiver's location">
+            <g fill="none" stroke="var(--color-primary)" stroke-width="1.4" stroke-dasharray="5 5" opacity="0.7">
+              <circle cx="150" cy="55" r="120"/>
+              <circle cx="450" cy="55" r="120"/>
+              <circle cx="300" cy="210" r="110"/>
+            </g>
+            <g fill="var(--color-amber)">
+              <circle cx="150" cy="55" r="7"/>
+              <circle cx="450" cy="55" r="7"/>
+              <circle cx="300" cy="210" r="7"/>
+            </g>
+            <g font-size="12" font-weight="600" fill="var(--color-text-muted)" text-anchor="middle">
+              <text x="150" y="34">Satellite A</text>
+              <text x="450" y="34">Satellite B</text>
+              <text x="300" y="238">Satellite C</text>
+            </g>
+            <circle cx="300" cy="110" r="9" fill="var(--color-primary)" stroke="var(--color-surface)" stroke-width="2"/>
+            <text x="300" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-primary)">You are here</text>
+            <text x="300" y="140" text-anchor="middle" font-size="10" fill="var(--color-text-faint)">(where all three circles meet)</text>
+          </svg>
+          <figcaption>Each satellite's signal draws a circle of possible distance. Where three circles cross is your exact position.</figcaption>
+        </figure>
+
         <div class="step-block">
           <span class="step-label">Guided worksheet</span>
           <ol>
-            <li>Look at the trilateration diagram on the <a href="co2.html#errors">CO2 page</a> and label which circle belongs to which satellite.</li>
+            <li>Look at the trilateration diagram above and label which circle belongs to which satellite.</li>
             <li>Match each GPS segment (space / control / user) to its correct one-line description.</li>
             <li>In the doubt-clearing session, ask about one GPS error you don't understand (e.g. multipath or ionospheric delay).</li>
             <li>Solve two simple positioning numericals using the fully worked example as your template.</li>
@@ -126,10 +184,41 @@
         </div>
         <p>Standalone GPS is accurate to a few metres — good enough for driving directions, but not for engineering. <strong>DGPS</strong> uses a second, fixed receiver (the <strong>base station</strong>) at a known point to work out how much error exists right now, and sends that correction to a moving receiver (the <strong>rover</strong>), making it far more accurate.</p>
 
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 210" role="img" aria-label="Simplified DGPS diagram: a fixed base station sends a correction signal to a moving rover receiver">
+            <g stroke="var(--color-primary)" stroke-width="1" fill="none" opacity="0.5">
+              <path d="M120 40 L120 10 M120 10 L100 25 M120 10 L140 25" stroke-dasharray="3 3"/>
+              <path d="M480 40 L480 10 M480 10 L460 25 M480 10 L500 25" stroke-dasharray="3 3"/>
+            </g>
+            <rect x="70" y="40" width="100" height="70" rx="10" fill="var(--color-primary-highlight)" stroke="var(--color-primary)" stroke-width="2"/>
+            <text x="120" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-primary)">BASE</text>
+            <text x="120" y="88" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Fixed, known spot</text>
+            <line x1="120" y1="110" x2="120" y2="150" stroke="var(--color-primary)" stroke-width="2"/>
+            <polygon points="120,150 105,175 135,175" fill="var(--color-primary)"/>
+
+            <rect x="430" y="40" width="100" height="70" rx="10" fill="var(--color-amber-highlight)" stroke="var(--color-amber)" stroke-width="2"/>
+            <text x="480" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-amber)">ROVER</text>
+            <text x="480" y="88" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Moving receiver</text>
+            <line x1="480" y1="110" x2="480" y2="150" stroke="var(--color-amber)" stroke-width="2"/>
+            <polygon points="480,150 465,175 495,175" fill="var(--color-amber)"/>
+
+            <path d="M175 55 C 280 20, 320 20, 425 55" stroke="var(--color-text-faint)" stroke-width="2" fill="none" marker-end="url(#slowarr2)"/>
+            <text x="300" y="25" text-anchor="middle" font-size="11" fill="var(--color-text-muted)">sends correction signal</text>
+            <defs>
+              <marker id="slowarr2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="var(--color-text-faint)"/>
+              </marker>
+            </defs>
+            <line x1="70" y1="195" x2="530" y2="195" stroke="var(--color-text-faint)" stroke-width="1"/>
+            <text x="300" y="208" text-anchor="middle" font-size="9" fill="var(--color-text-faint)">ground</text>
+          </svg>
+          <figcaption>The base station knows its own exact position, so it can measure GPS error and pass the correction to the rover.</figcaption>
+        </figure>
+
         <div class="step-block">
           <span class="step-label">Guided worksheet</span>
           <ol>
-            <li>Label the base-station and rover on the DGPS diagram on the <a href="co3.html#errors">CO3 page</a>.</li>
+            <li>Label the base-station and rover on the DGPS diagram above.</li>
             <li>Complete the sentence: "Differential correction removes common error by ___."</li>
             <li>Solve one guided loop-closure numerical (fully worked), then try a second one on your own.</li>
             <li>Compare standalone GPS vs. DGPS using the table from your notes and note two differences.</li>
@@ -141,6 +230,48 @@
           <h2>Total Station Step-by-Step</h2>
         </div>
         <p>A Total Station measures angles and distances in a single sighting and does the maths for you. Before you can use it, you must set it up correctly over the ground point — this is the most important skill to practise first.</p>
+
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 150" role="img" aria-label="Four-step Total Station setup checklist: centre, level, orient, ready">
+            <g font-size="11" text-anchor="middle">
+              <g>
+                <circle cx="80" cy="55" r="38" fill="var(--color-primary-highlight)" stroke="var(--color-primary)" stroke-width="2"/>
+                <path d="M65 55 l10 10 l20 -22" stroke="var(--color-primary)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="80" y="112" font-weight="700" fill="var(--color-text)">1. Centre</text>
+                <text x="80" y="128" font-size="9" fill="var(--color-text-muted)">over the ground mark</text>
+              </g>
+              <g>
+                <circle cx="240" cy="55" r="38" fill="var(--color-primary-highlight)" stroke="var(--color-primary)" stroke-width="2"/>
+                <path d="M225 55 l10 10 l20 -22" stroke="var(--color-primary)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="240" y="112" font-weight="700" fill="var(--color-text)">2. Level</text>
+                <text x="240" y="128" font-size="9" fill="var(--color-text-muted)">the instrument</text>
+              </g>
+              <g>
+                <circle cx="400" cy="55" r="38" fill="var(--color-primary-highlight)" stroke="var(--color-primary)" stroke-width="2"/>
+                <path d="M385 55 l10 10 l20 -22" stroke="var(--color-primary)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="400" y="112" font-weight="700" fill="var(--color-text)">3. Orient</text>
+                <text x="400" y="128" font-size="9" fill="var(--color-text-muted)">to a known point</text>
+              </g>
+              <g>
+                <circle cx="540" cy="55" r="38" fill="var(--color-amber-highlight)" stroke="var(--color-amber)" stroke-width="2"/>
+                <path d="M525 55 l10 10 l20 -22" stroke="var(--color-amber)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="540" y="112" font-weight="700" fill="var(--color-amber)">4. Ready</text>
+                <text x="540" y="128" font-size="9" fill="var(--color-text-muted)">to take readings</text>
+              </g>
+            </g>
+            <g stroke="var(--color-text-faint)" stroke-width="2" fill="none" marker-end="url(#slowarr3)">
+              <path d="M120 55 H198"/>
+              <path d="M280 55 H358"/>
+              <path d="M440 55 H498"/>
+            </g>
+            <defs>
+              <marker id="slowarr3" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="var(--color-text-faint)"/>
+              </marker>
+            </defs>
+          </svg>
+          <figcaption>Follow these four steps in order, every single time, before you take any reading.</figcaption>
+        </figure>
 
         <div class="step-block">
           <span class="step-label">Guided worksheet</span>
@@ -164,10 +295,32 @@
           <div class="error-item"><span class="tag">Field-to-finish</span><p>Directly turns instrument readings into map features.</p></div>
         </div>
 
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 160" role="img" aria-label="Scale diagram: 1 centimetre on paper equals 100 metres on the ground">
+            <g>
+              <rect x="60" y="30" width="180" height="56" rx="8" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.5"/>
+              <line x1="90" y1="58" x2="180" y2="58" stroke="var(--color-primary)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="90" y1="50" x2="90" y2="66" stroke="var(--color-primary)" stroke-width="3"/>
+              <line x1="180" y1="50" x2="180" y2="66" stroke="var(--color-primary)" stroke-width="3"/>
+              <text x="135" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary)">1 cm on the map</text>
+            </g>
+            <text x="300" y="64" text-anchor="middle" font-size="22" fill="var(--color-text-faint)">=</text>
+            <g>
+              <rect x="360" y="30" width="180" height="56" rx="8" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.5"/>
+              <line x1="375" y1="58" x2="525" y2="58" stroke="var(--color-amber)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="375" y1="50" x2="375" y2="66" stroke="var(--color-amber)" stroke-width="3"/>
+              <line x1="525" y1="50" x2="525" y2="66" stroke="var(--color-amber)" stroke-width="3"/>
+              <text x="450" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-amber)">100 m on the real ground</text>
+            </g>
+            <text x="300" y="130" text-anchor="middle" font-size="12" fill="var(--color-text-muted)">So a scale of 1:10,000 means — 1 cm on the map stands for 100 m on the ground.</text>
+          </svg>
+          <figcaption>Whatever the scale says, that's the multiplying factor between the map and the real world.</figcaption>
+        </figure>
+
         <div class="step-block">
           <span class="step-label">Guided worksheet</span>
           <ol>
-            <li>Label the globe-to-map projection diagram and scale bar on the <a href="co5.html#software">CO5 page</a>.</li>
+            <li>Label the globe-to-map projection diagram and scale bar on the <a href="co5.html#software">CO5 page</a>, then compare it with the scale diagram above.</li>
             <li>Solve two guided scale-conversion problems (e.g. "1 cm = 100 m") using the worked example.</li>
             <li>Match each software name to its category (CAD-based / GIS / field-to-finish).</li>
             <li>In the software-orientation session, import one sample point file into QGIS and describe what you see.</li>
