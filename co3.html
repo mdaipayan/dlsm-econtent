@@ -166,6 +166,67 @@
           </div>
         </div>
 
+        <h2 id="quiz">Quick Check</h2>
+        <div class="quiz-card" data-quiz>
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO3</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/4</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "In DGPS, what does the base station do?",
+    "options": [
+      "Moves around the survey site collecting data",
+      "Occupies a known point and computes the correction sent to the rover",
+      "Replaces the need for GPS satellites",
+      "Only operates indoors"
+    ],
+    "correct": 1,
+    "explain": "The base station sits on a point with known coordinates, compares that to its GPS-derived position, and transmits the resulting correction to the rover."
+  },
+  {
+    "q": "What does the \"loop closure\" technique verify in a traverse survey?",
+    "options": [
+      "The colour of the survey markers",
+      "The battery level of the receiver",
+      "The accumulated error, by returning to a known point",
+      "The number of satellites visible"
+    ],
+    "correct": 2,
+    "explain": "A traverse that starts and ends at a known point reveals its accumulated misclosure error when the computed and known closing positions are compared."
+  },
+  {
+    "q": "Real-time DGPS differs from post-processed DGPS mainly in that:",
+    "options": [
+      "Real-time applies corrections instantly in the field; post-processed applies them later in office software",
+      "Real-time is inherently less accurate",
+      "Post-processed requires no base station",
+      "Real-time doesn't need a rover"
+    ],
+    "correct": 0,
+    "explain": "Real-time DGPS broadcasts and applies corrections immediately; post-processed DGPS logs raw data from both receivers and computes corrections afterwards."
+  },
+  {
+    "q": "Which rule is commonly used to distribute misclosure error across traverse stations?",
+    "options": [
+      "Simpson's rule",
+      "Bowditch (compass) rule",
+      "Newton's rule",
+      "Pythagoras' rule"
+    ],
+    "correct": 1,
+    "explain": "The Bowditch (compass) rule proportionally distributes the misclosure error across all stations in the traverse."
+  }
+]
+          </script>
+        </div>
+
         <div class="further-reading">
           <h2>Further reading</h2>
           <ul>
@@ -187,6 +248,7 @@
           <li><a href="#control-station">Control Station Set-up</a></li>
           <li><a href="#loop-closure">Loop Closure</a></li>
           <li><a href="#advantages">Advantages Over GPS</a></li>
+          <li><a href="#quiz">Quick Check</a></li>
         </ul>
       </aside>
 
@@ -212,5 +274,6 @@
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/quiz.js"></script>
 </body>
 </html>

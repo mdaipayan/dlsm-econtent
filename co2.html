@@ -175,6 +175,67 @@
           </div>
         </div>
 
+        <h2 id="quiz">Quick Check</h2>
+        <div class="quiz-card" data-quiz>
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO2</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/4</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "How many segments does the GPS system consist of?",
+    "options": [
+      "Two",
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "correct": 1,
+    "explain": "GPS is built from three cooperating segments: space, control and user."
+  },
+  {
+    "q": "Absolute (point) positioning with a single receiver requires signals from at least how many satellites?",
+    "options": [
+      "Two",
+      "Three",
+      "Four",
+      "Six"
+    ],
+    "correct": 2,
+    "explain": "A single receiver needs at least four satellites to independently compute its 3D position and clock offset."
+  },
+  {
+    "q": "Which GPS error source is described as the single largest error for single-frequency receivers?",
+    "options": [
+      "Multipath",
+      "Ionospheric delay",
+      "Satellite clock error",
+      "Dilution of precision"
+    ],
+    "correct": 1,
+    "explain": "Charged particles in the ionosphere slow the signal, making ionospheric delay the largest error source for single-frequency receivers."
+  },
+  {
+    "q": "Survey-grade GPS receivers reach centimetre-level accuracy mainly by using:",
+    "options": [
+      "Code-based pseudorange only",
+      "Carrier-phase measurement with differential/RTK correction",
+      "Visual estimation",
+      "The navigation message alone"
+    ],
+    "correct": 1,
+    "explain": "Carrier-phase measurement combined with differential or RTK correction is what pushes survey-grade receivers to centimetre accuracy."
+  }
+]
+          </script>
+        </div>
+
         <div class="further-reading">
           <h2>Further reading</h2>
           <ul>
@@ -196,6 +257,7 @@
           <li><a href="#receivers">Types of Receivers</a></li>
           <li><a href="#positioning">Positioning Methods</a></li>
           <li><a href="#errors">Sources of Error</a></li>
+          <li><a href="#quiz">Quick Check</a></li>
         </ul>
       </aside>
 
@@ -221,5 +283,6 @@
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/quiz.js"></script>
 </body>
 </html>

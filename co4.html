@@ -161,6 +161,67 @@
         </div>
         <p>Instrumental errors are largely eliminated by taking observations in both <strong>face-left and face-right</strong> and averaging the results, along with periodic calibration against manufacturer specifications.</p>
 
+        <h2 id="quiz">Quick Check</h2>
+        <div class="quiz-card" data-quiz>
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO4</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/4</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "What does EDM stand for in a Total Station?",
+    "options": [
+      "Electronic Distance Measurement",
+      "External Data Module",
+      "Elevation Distance Metric",
+      "Easting-Distance Mapping"
+    ],
+    "correct": 0,
+    "explain": "The EDM (Electronic Distance Measurement) unit emits and receives a signal reflected off a prism to compute distance."
+  },
+  {
+    "q": "What is the correct order of the Total Station setup procedure?",
+    "options": [
+      "Level → Centre → Orient → Job setup",
+      "Centre → Level → Orient → Job setup",
+      "Orient → Centre → Level → Job setup",
+      "Job setup → Centre → Orient → Level"
+    ],
+    "correct": 1,
+    "explain": "The instrument must first be centred over the mark, then levelled, then oriented to a known backsight, before the job/point setup begins."
+  },
+  {
+    "q": "Taking observations in both face-left and face-right positions primarily helps to:",
+    "options": [
+      "Save battery",
+      "Eliminate most instrumental errors",
+      "Increase satellite visibility",
+      "Reduce the number of points needed"
+    ],
+    "correct": 1,
+    "explain": "Averaging face-left and face-right readings cancels out collimation and vertical-index errors from imperfect instrument adjustment."
+  },
+  {
+    "q": "The method of observing detail points from one or more control stations to build contours is called the:",
+    "options": [
+      "Radial (polar) method",
+      "Trilateration method",
+      "DGPS correction method",
+      "Bowditch adjustment"
+    ],
+    "correct": 0,
+    "explain": "The radial (polar) method systematically observes detail points around a site from control stations, building the dataset used for contouring."
+  }
+]
+          </script>
+        </div>
+
         <div class="further-reading">
           <h2>Further reading</h2>
           <ul>
@@ -182,6 +243,7 @@
           <li><a href="#measurement">Measurement Principle</a></li>
           <li><a href="#contouring">Contouring &amp; Mapping</a></li>
           <li><a href="#errors">Sources of Error</a></li>
+          <li><a href="#quiz">Quick Check</a></li>
         </ul>
       </aside>
 
@@ -207,5 +269,6 @@
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/quiz.js"></script>
 </body>
 </html>

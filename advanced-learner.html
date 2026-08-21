@@ -92,6 +92,55 @@
           </div>
         </div>
 
+        <div class="quiz-card" data-quiz id="quiz-co1">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Self-Check — CO1</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "For a large highway corridor survey spanning several kilometres, which technique is generally most efficient?",
+    "options": [
+      "Chain surveying",
+      "UAV/drone photogrammetry or mobile mapping",
+      "Plane table surveying",
+      "Manual field-book transcription"
+    ],
+    "correct": 1,
+    "explain": "UAV photogrammetry and mobile mapping cover large linear corridors far faster than ground methods like chain or plane table surveying."
+  },
+  {
+    "q": "Why is geodetic (rather than plane) surveying necessary for national control networks?",
+    "options": [
+      "It's cheaper",
+      "It accounts for the Earth's curvature over large areas",
+      "It requires less equipment",
+      "It avoids using satellites"
+    ],
+    "correct": 1,
+    "explain": "Plane surveying assumes a flat Earth, which breaks down over large distances — geodetic surveying accounts for curvature."
+  },
+  {
+    "q": "A LiDAR point cloud primarily provides:",
+    "options": [
+      "A single distance reading",
+      "Millions of dense 3D points describing terrain and structures",
+      "Only 2D map coordinates",
+      "Satellite orbital data"
+    ],
+    "correct": 1,
+    "explain": "LiDAR scanners record millions of 3D points per second, producing a dense point cloud of the terrain and any structures on it."
+  }
+]
+          </script>
+        </div>
+
         <div class="track-heading" id="co2">
           <span class="co-badge co-badge--amber">CO2</span>
           <h2>Field Exercise: Live GPS Accuracy</h2>
@@ -106,6 +155,55 @@
             <li>Investigate RTK-GPS and summarise one real infrastructure project that uses it.</li>
             <li>Submit a short technical report with recommendations for minimising the error you observed.</li>
           </ol>
+        </div>
+
+        <div class="quiz-card" data-quiz id="quiz-co2">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Self-Check — CO2</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "Dilution of Precision (DOP) primarily reflects:",
+    "options": [
+      "Receiver battery health",
+      "How satellite geometry amplifies existing errors",
+      "The number of GPS segments",
+      "The type of ranging code used"
+    ],
+    "correct": 1,
+    "explain": "Poor satellite geometry — satellites clustered together — amplifies the effect of all other GPS error sources; this is DOP."
+  },
+  {
+    "q": "RTK-GPS achieves high accuracy mainly through:",
+    "options": [
+      "Using only the C/A code",
+      "Real-time carrier-phase correction from a reference station",
+      "Ignoring atmospheric delay",
+      "A slower navigation message data rate"
+    ],
+    "correct": 1,
+    "explain": "RTK uses carrier-phase measurements and real-time corrections from a reference station to reach centimetre-level accuracy."
+  },
+  {
+    "q": "Which pair of error sources are largely cancelled when two nearby receivers observe the same satellites simultaneously?",
+    "options": [
+      "Multipath and receiver battery drain",
+      "Satellite clock and ephemeris/atmospheric errors common to both receivers",
+      "Keyboard input errors",
+      "Antenna colour mismatch"
+    ],
+    "correct": 1,
+    "explain": "Errors common to both receivers — satellite clock, ephemeris, ionospheric and tropospheric delay — cancel out; this is the basis of DGPS."
+  }
+]
+          </script>
         </div>
 
         <div class="track-heading" id="co3">
@@ -124,6 +222,55 @@
           </ol>
         </div>
 
+        <div class="quiz-card" data-quiz id="quiz-co3">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Self-Check — CO3</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "In a closed-traverse loop-closure adjustment, the Bowditch rule distributes the misclosure error:",
+    "options": [
+      "Equally to just the first station",
+      "Proportionally across all traverse stations based on distance",
+      "Only to the last station",
+      "Randomly among stations"
+    ],
+    "correct": 1,
+    "explain": "The Bowditch (compass) rule distributes the misclosure error proportionally across all stations in the traverse."
+  },
+  {
+    "q": "Post-processed DGPS is chosen over real-time DGPS mainly when:",
+    "options": [
+      "Higher accuracy is always required regardless of link",
+      "No real-time communication link is available between base and rover",
+      "The rover doesn't need any correction",
+      "Base station coordinates are unknown"
+    ],
+    "correct": 1,
+    "explain": "Post-processed DGPS logs raw data from both receivers and computes corrections afterwards, useful when no real-time link exists."
+  },
+  {
+    "q": "Compared to standalone GPS, DGPS is suitable for which kind of work?",
+    "options": [
+      "Reconnaissance only",
+      "Control and detail engineering surveys",
+      "No survey work",
+      "Only recreational use"
+    ],
+    "correct": 1,
+    "explain": "DGPS's sub-metre to centimetre accuracy makes it suitable for control and detail surveys, unlike standalone GPS."
+  }
+]
+          </script>
+        </div>
+
         <div class="track-heading" id="co4">
           <span class="co-badge co-badge--amber">CO4</span>
           <h2>Independent Field Survey &amp; Contour Map</h2>
@@ -140,6 +287,55 @@
           </ol>
         </div>
 
+        <div class="quiz-card" data-quiz id="quiz-co4">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Self-Check — CO4</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "Systematic instrumental errors like collimation error are best minimised by:",
+    "options": [
+      "Ignoring them",
+      "Taking face-left and face-right observations and averaging",
+      "Using a longer tripod",
+      "Increasing EDM power only"
+    ],
+    "correct": 1,
+    "explain": "Averaging face-left and face-right readings cancels out collimation and vertical-index errors."
+  },
+  {
+    "q": "The radial (polar) method of detail surveying builds up point data by:",
+    "options": [
+      "Observing detail points from one or more control stations",
+      "Drawing freehand sketches only",
+      "Using only GPS without a Total Station",
+      "Measuring only vertical angles"
+    ],
+    "correct": 0,
+    "explain": "The radial (polar) method systematically observes detail points around a site from one or more control stations."
+  },
+  {
+    "q": "Trigonometric levelling in a Total Station combines which two measurements to get elevation difference?",
+    "options": [
+      "Horizontal angle and EDM battery level",
+      "Slope distance and vertical angle",
+      "Two horizontal angles",
+      "Prism height and telescope colour"
+    ],
+    "correct": 1,
+    "explain": "The instrument resolves slope distance and vertical angle into horizontal distance and elevation difference."
+  }
+]
+          </script>
+        </div>
+
         <div class="track-heading" id="co5">
           <span class="co-badge co-badge--amber">CO5</span>
           <h2>Independent GIS Mapping Challenge</h2>
@@ -154,6 +350,55 @@
             <li>Research and briefly report on UAV/drone photogrammetry or LiDAR-based mapping as an extension to conventional software-based mapping.</li>
             <li>Present the finished map and a short methodology write-up to the class as a mini-project.</li>
           </ol>
+        </div>
+
+        <div class="quiz-card" data-quiz id="quiz-co5">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Self-Check — CO5</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "A Triangulated Irregular Network (TIN) is primarily used to:",
+    "options": [
+      "Store attribute tables",
+      "Model the terrain surface from elevation points for contour generation",
+      "Define a coordinate reference system",
+      "Style map symbology"
+    ],
+    "correct": 1,
+    "explain": "A TIN models the terrain surface by triangulating elevation points, and contour lines are then interpolated from it."
+  },
+  {
+    "q": "Choosing between CAD and GIS software for a project depends mainly on:",
+    "options": [
+      "The software's release date",
+      "Whether the priority is precision drafting or spatial analysis/database management",
+      "The colour of the interface",
+      "The size of the monitor"
+    ],
+    "correct": 1,
+    "explain": "CAD favours precision drafting for engineering design; GIS favours spatial analysis and database-driven asset management."
+  },
+  {
+    "q": "In GIS \"detailing,\" topology checks like verifying no gaps/overlaps are performed to:",
+    "options": [
+      "Improve rendering speed only",
+      "Ensure spatial data quality before cartographic finishing and delivery",
+      "Reduce file size",
+      "Add more attribute fields automatically"
+    ],
+    "correct": 1,
+    "explain": "Quality checks — feature counts, topology, attribute completeness — are the final step before finishing and delivering the map."
+  }
+]
+          </script>
         </div>
 
         <div class="further-reading">
@@ -203,5 +448,6 @@
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/quiz.js"></script>
 </body>
 </html>

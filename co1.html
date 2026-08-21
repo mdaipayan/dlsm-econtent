@@ -176,6 +176,67 @@
         <h2 id="applications">Applications</h2>
         <p>Digital land surveying underpins topographic mapping, cadastral (land parcel) surveys, construction layout and as-built surveys, highway and railway alignment, hydrographic surveys, mining volume computation, and the geospatial base data used in Geographic Information Systems (GIS).</p>
 
+        <h2 id="quiz">Quick Check</h2>
+        <div class="quiz-card" data-quiz>
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO1</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/4</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "Which of the following is NOT one of the three stages of the digital survey workflow?",
+    "options": [
+      "Data capture",
+      "Data transfer & processing",
+      "Data output",
+      "Manual field-book transcription"
+    ],
+    "correct": 3,
+    "explain": "The three stages are capture, transfer/processing and output — manual field-book transcription is exactly what a digital workflow removes."
+  },
+  {
+    "q": "What does geodetic surveying account for that plane surveying ignores?",
+    "options": [
+      "Instrument cost",
+      "The Earth's curvature",
+      "Weather conditions",
+      "GPS satellite count"
+    ],
+    "correct": 1,
+    "explain": "Geodetic surveying accounts for the Earth's curvature and is used for large areas and national control networks."
+  },
+  {
+    "q": "What is a control point?",
+    "options": [
+      "Any random point picked during a survey",
+      "A point whose position/elevation is already known and trusted as a reference",
+      "The location of the Total Station operator",
+      "A point marked only on paper maps"
+    ],
+    "correct": 1,
+    "explain": "Control points have a precisely known position and/or elevation and act as fixed references for all other detail measurements."
+  },
+  {
+    "q": "Which technology captures dense 3D point clouds using a laser scanner (airborne or ground-based)?",
+    "options": [
+      "LiDAR",
+      "Compass surveying",
+      "Chain surveying",
+      "Plane table surveying"
+    ],
+    "correct": 0,
+    "explain": "LiDAR records millions of 3D points per second, producing a dense point cloud of the terrain and any structures on it."
+  }
+]
+          </script>
+        </div>
+
         <div class="further-reading">
           <h2>Further reading</h2>
           <ul>
@@ -197,6 +258,7 @@
           <li><a href="#control-points">Control Points</a></li>
           <li><a href="#advanced-methods">Advanced Digital Methods</a></li>
           <li><a href="#applications">Applications</a></li>
+          <li><a href="#quiz">Quick Check</a></li>
         </ul>
       </aside>
 
@@ -222,5 +284,6 @@
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/quiz.js"></script>
 </body>
 </html>

@@ -132,6 +132,55 @@
           </div>
         </div>
 
+        <div class="quiz-card" data-quiz id="quiz-co1">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO1</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "What are the three simple steps of a digital survey, in order?",
+    "options": [
+      "Process → Capture → Output",
+      "Capture → Process → Output",
+      "Output → Capture → Process",
+      "Capture → Output → Process"
+    ],
+    "correct": 1,
+    "explain": "Every digital survey follows Capture → Process → Output, in that order."
+  },
+  {
+    "q": "What is a \"control point\"?",
+    "options": [
+      "A trusted, fixed reference point used to check other measurements",
+      "A random spot chosen at the end of the survey",
+      "The office where data is stored",
+      "A type of GPS satellite"
+    ],
+    "correct": 0,
+    "explain": "A control point is a fixed, trusted reference point that every other measurement is checked against."
+  },
+  {
+    "q": "Which type of control fixes a point's height (Z)?",
+    "options": [
+      "Horizontal control",
+      "Vertical control",
+      "Digital control",
+      "Field control"
+    ],
+    "correct": 1,
+    "explain": "Vertical control fixes a point's height above a reference level; horizontal control fixes its flat (X, Y) position."
+  }
+]
+          </script>
+        </div>
+
         <div class="track-heading" id="co2">
           <span class="co-badge">CO2</span>
           <h2>GPS Made Simple</h2>
@@ -176,6 +225,55 @@
             <li>In the doubt-clearing session, ask about one GPS error you don't understand (e.g. multipath or ionospheric delay).</li>
             <li>Solve two simple positioning numericals using the fully worked example as your template.</li>
           </ol>
+        </div>
+
+        <div class="quiz-card" data-quiz id="quiz-co2">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO2</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "What is \"trilateration\"?",
+    "options": [
+      "Where three or more satellite distance circles cross, marking your position",
+      "A type of satellite orbit",
+      "The correction sent by DGPS",
+      "A method of levelling a Total Station"
+    ],
+    "correct": 0,
+    "explain": "Each satellite's signal draws a circle of possible distance — where three or more circles cross is your exact position."
+  },
+  {
+    "q": "Which GPS segment includes the satellites orbiting Earth?",
+    "options": [
+      "Control segment",
+      "User segment",
+      "Space segment",
+      "Ground segment"
+    ],
+    "correct": 2,
+    "explain": "The space segment is the satellites orbiting Earth that broadcast signals."
+  },
+  {
+    "q": "Which GPS segment is your own receiver?",
+    "options": [
+      "Space segment",
+      "User segment",
+      "Control segment",
+      "None of these"
+    ],
+    "correct": 1,
+    "explain": "The user segment is your GPS receiver, which listens to the satellite signals."
+  }
+]
+          </script>
         </div>
 
         <div class="track-heading" id="co3">
@@ -223,6 +321,55 @@
             <li>Solve one guided loop-closure numerical (fully worked), then try a second one on your own.</li>
             <li>Compare standalone GPS vs. DGPS using the table from your notes and note two differences.</li>
           </ol>
+        </div>
+
+        <div class="quiz-card" data-quiz id="quiz-co3">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO3</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "In DGPS, which receiver is fixed at a known spot?",
+    "options": [
+      "Rover",
+      "Base",
+      "Satellite",
+      "Prism"
+    ],
+    "correct": 1,
+    "explain": "The base station sits at a fixed, known spot and works out how much error exists right now."
+  },
+  {
+    "q": "What does the base station send to the rover?",
+    "options": [
+      "A correction signal",
+      "A photograph",
+      "A new satellite",
+      "A different frequency"
+    ],
+    "correct": 0,
+    "explain": "The base station sends a correction signal to the moving rover receiver, making it far more accurate."
+  },
+  {
+    "q": "DGPS makes GPS positioning:",
+    "options": [
+      "Less accurate",
+      "Slower but cheaper",
+      "Far more accurate",
+      "Impossible without internet"
+    ],
+    "correct": 2,
+    "explain": "By correcting for shared errors, DGPS makes positioning far more accurate than standalone GPS."
+  }
+]
+          </script>
         </div>
 
         <div class="track-heading" id="co4">
@@ -283,6 +430,55 @@
           </ol>
         </div>
 
+        <div class="quiz-card" data-quiz id="quiz-co4">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO4</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "What is the first step when setting up a Total Station?",
+    "options": [
+      "Level the instrument",
+      "Centre it over the ground mark",
+      "Switch it on",
+      "Take a reading"
+    ],
+    "correct": 1,
+    "explain": "Centring over the ground mark is always the first of the four setup steps."
+  },
+  {
+    "q": "What is the last step before taking readings?",
+    "options": [
+      "Centre",
+      "Level",
+      "Orient",
+      "Ready"
+    ],
+    "correct": 3,
+    "explain": "\"Ready to take readings\" is the fourth and final step, after centre, level and orient."
+  },
+  {
+    "q": "Why must you follow all four setup steps every time?",
+    "options": [
+      "To use less battery",
+      "To make sure your readings are accurate",
+      "Because the manual says so, with no reason",
+      "To impress your instructor only"
+    ],
+    "correct": 1,
+    "explain": "Skipping or reordering the setup steps introduces errors into every reading you take afterwards."
+  }
+]
+          </script>
+        </div>
+
         <div class="track-heading" id="co5">
           <span class="co-badge">CO5</span>
           <h2>Mapping Basics</h2>
@@ -325,6 +521,55 @@
             <li>Match each software name to its category (CAD-based / GIS / field-to-finish).</li>
             <li>In the software-orientation session, import one sample point file into QGIS and describe what you see.</li>
           </ol>
+        </div>
+
+        <div class="quiz-card" data-quiz id="quiz-co5">
+          <div class="quiz-head">
+            <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO5</h3>
+            <span class="quiz-score" data-quiz-score>Score: 0/3</span>
+          </div>
+          <div class="quiz-questions" data-quiz-questions></div>
+          <div class="quiz-footer" data-quiz-footer hidden>
+            <p class="quiz-result" data-quiz-result></p>
+            <button class="quiz-retry" data-quiz-retry type="button">Retake Quiz</button>
+          </div>
+          <script type="application/json" data-quiz-data>
+[
+  {
+    "q": "If the map scale is 1:10,000, how many metres on the ground does 1 cm on the map represent?",
+    "options": [
+      "1 m",
+      "10 m",
+      "100 m",
+      "1000 m"
+    ],
+    "correct": 2,
+    "explain": "A scale of 1:10,000 means 1 cm on the map stands for 100 m on the real ground."
+  },
+  {
+    "q": "Which software category is best for precise engineering drawings?",
+    "options": [
+      "GIS",
+      "CAD-based",
+      "Field-to-finish",
+      "None of these"
+    ],
+    "correct": 1,
+    "explain": "CAD-based software (e.g. AutoCAD Civil 3D) is used for precise drafting and engineering drawings."
+  },
+  {
+    "q": "What does \"projection\" mean in mapping?",
+    "options": [
+      "The method of flattening the curved Earth onto a flat map",
+      "The colour scheme of a map",
+      "The accuracy of a GPS receiver",
+      "The name of a survey company"
+    ],
+    "correct": 0,
+    "explain": "Projection is the method used to flatten the curved Earth onto a flat map."
+  }
+]
+          </script>
         </div>
 
         <div class="further-reading">
@@ -371,5 +616,6 @@
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/quiz.js"></script>
 </body>
 </html>
