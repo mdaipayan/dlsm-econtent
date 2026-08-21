@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CO5 — Mapping Fundamentals &amp; Software | DLSM E-Content</title>
+<meta name="description" content="CO5: Use advanced software for mapping — mapping fundamentals, categories of mapping/GIS software, working steps and the detailing process." />
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,500,400&f[]=satoshi@400,500,700&f[]=jetbrains-mono@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-site-header>
+  <div class="container nav-bar">
+    <a class="brand" href="index.html" aria-label="Home">
+      <svg class="brand-mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="14.5" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
+        <circle cx="16" cy="16" r="9.5" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+        <circle cx="16" cy="16" r="2.6" fill="currentColor"/>
+        <path d="M16 2.5V6M16 26v3.5M2.5 16H6M26 16h3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-title">DLSM E-Content</span>
+        <span class="brand-sub">BTCVE802T · Civil Engg.</span>
+      </span>
+    </a>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <ul class="nav-links" data-nav-links>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="co1.html">CO1</a></li>
+      <li><a href="co2.html">CO2</a></li>
+      <li><a href="co3.html">CO3</a></li>
+      <li><a href="co4.html">CO4</a></li>
+      <li><a href="co5.html" aria-current="page">CO5</a></li>
+      <li><a href="references.html">References</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode"></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="co-hero">
+    <div class="container">
+      <div class="co-hero-top">
+        <span class="co-badge">CO5</span>
+        <span class="unit-tag">Unit V · Mapping &amp; Software</span>
+      </div>
+      <h1>Mapping Fundamentals &amp; Software</h1>
+      <div class="outcome-box">
+        <span class="label">Course Outcome</span>
+        <p>CO5: Use advanced software for mapping.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+
+      <article class="prose">
+
+        <h2 id="introduction">Introduction</h2>
+        <p>Once field data has been captured by GPS, DGPS or Total Station, it must be converted into a finished map or spatial database. This final module covers the core mapping concepts and the categories of software used to turn survey coordinates into accurate, well-presented digital maps and Geographic Information System (GIS) layers.</p>
+
+        <h2 id="fundamentals">Mapping Fundamentals</h2>
+        <div class="error-grid">
+          <div class="error-item"><span class="tag">Scale</span><p>The ratio between a distance on the map and the corresponding distance on the ground, determining how much real-world detail can be shown.</p></div>
+          <div class="error-item"><span class="tag">Map projection</span><p>A mathematical method for representing the curved Earth's surface on a flat map (e.g. UTM, Polyconic), each with its own distortion trade-offs.</p></div>
+          <div class="error-item"><span class="tag">Coordinate reference system</span><p>The datum and coordinate grid (geographic or projected) that gives every point a unique, standardised location.</p></div>
+          <div class="error-item"><span class="tag">Accuracy standards</span><p>Positional accuracy requirements (e.g. National Map Accuracy Standards) that a map must meet for its intended use.</p></div>
+        </div>
+
+        <h2 id="software">Categories of Mapping Software</h2>
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Purpose</th><th>Examples</th></tr></thead>
+          <tbody>
+            <tr><td>CAD-based mapping</td><td>Precise drafting, contouring and engineering plan production</td><td>AutoCAD Civil 3D, MicroStation</td></tr>
+            <tr><td>GIS software</td><td>Spatial analysis, attribute querying, thematic mapping</td><td>QGIS, ArcGIS</td></tr>
+            <tr><td>Field-to-finish survey software</td><td>Direct import/processing of Total Station &amp; GPS field data into map features</td><td>Instrument-manufacturer suites, survey CAD add-ons</td></tr>
+          </tbody>
+        </table>
+        <p>Each category serves a different stage of the workflow — field-to-finish software gets raw survey data into digital form quickly, CAD produces precise engineering drawings, and GIS adds analytical and database capability on top of the spatial data.</p>
+
+        <h2 id="working-steps">Working Steps in Automated Mapping</h2>
+        <ol>
+          <li><strong>Data import:</strong> Coordinate/point data is transferred from the Total Station or GPS controller into the software, usually via a standard exchange format.</li>
+          <li><strong>Point/feature coding:</strong> Field codes recorded during survey (e.g. "BLD" for building corner, "TREE", "MH" for manhole) are used to automatically classify and symbolise points.</li>
+          <li><strong>Linework generation:</strong> Coded points are automatically or manually joined into linework representing boundaries, roads, drainage and other linear features.</li>
+          <li><strong>Contour interpolation:</strong> A Digital Terrain Model (DTM) is built by triangulating elevation points (commonly using a Triangulated Irregular Network, TIN), from which contour lines at a chosen interval are interpolated.</li>
+          <li><strong>Map layout &amp; symbology:</strong> Layers are styled, legends, scale bars, north arrows and grids are added to produce a presentable map sheet.</li>
+          <li><strong>Export:</strong> Final data is exported in formats such as DXF (CAD), Shapefile or GeoTIFF (GIS) for use by other software or teams.</li>
+        </ol>
+
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 200" role="img" aria-label="Flow diagram showing the mapping workflow from field data to finished map export">
+            <g font-size="10" fill="var(--color-text)" text-anchor="middle">
+              <g>
+                <rect x="10" y="80" width="100" height="46" rx="8" fill="var(--color-primary-highlight)" stroke="var(--color-primary)"/>
+                <text x="60" y="100" fill="var(--color-primary)" font-weight="700">Field Data</text>
+                <text x="60" y="115" fill="var(--color-text-muted)" font-size="9">GPS / Total Station</text>
+              </g>
+              <g>
+                <rect x="140" y="80" width="100" height="46" rx="8" fill="var(--color-surface)" stroke="var(--color-border)"/>
+                <text x="190" y="100" font-weight="700">Point Coding</text>
+                <text x="190" y="115" fill="var(--color-text-muted)" font-size="9">Classify features</text>
+              </g>
+              <g>
+                <rect x="270" y="80" width="100" height="46" rx="8" fill="var(--color-surface)" stroke="var(--color-border)"/>
+                <text x="320" y="100" font-weight="700">Linework &amp; DTM</text>
+                <text x="320" y="115" fill="var(--color-text-muted)" font-size="9">TIN / contours</text>
+              </g>
+              <g>
+                <rect x="400" y="80" width="100" height="46" rx="8" fill="var(--color-surface)" stroke="var(--color-border)"/>
+                <text x="450" y="100" font-weight="700">Map Layout</text>
+                <text x="450" y="115" fill="var(--color-text-muted)" font-size="9">Symbology, legend</text>
+              </g>
+              <g>
+                <rect x="490" y="10" width="100" height="46" rx="8" fill="var(--color-amber-highlight)" stroke="var(--color-amber)"/>
+                <text x="540" y="30" fill="var(--color-amber)" font-weight="700">Export</text>
+                <text x="540" y="45" fill="var(--color-text-muted)" font-size="9">DXF / SHP / GeoTIFF</text>
+              </g>
+            </g>
+            <g stroke="var(--color-text-faint)" stroke-width="1.4" fill="none" marker-end="url(#arr2)">
+              <path d="M110 103 H140"/>
+              <path d="M240 103 H270"/>
+              <path d="M370 103 H400"/>
+              <path d="M470 90 C 480 70, 500 60, 510 56"/>
+            </g>
+            <defs>
+              <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="var(--color-text-faint)"/>
+              </marker>
+            </defs>
+          </svg>
+          <figcaption>Field-to-finish mapping workflow: field data → point coding → linework/DTM → map layout → export.</figcaption>
+        </figure>
+
+        <h2 id="detailing">Detailing Process</h2>
+        <p>"Detailing" refers to attaching descriptive attribute data to each mapped feature — for example, a manhole point might carry attributes for depth, material and condition, while a building polygon might carry attributes for use, floors and ownership. In a GIS, these attributes make the map queryable (e.g. "show all manholes deeper than 2 m"), turning a simple drawing into a spatial database. Quality checks — comparing feature counts, verifying topology (no gaps/overlaps), and validating attribute completeness — are the final step before cartographic finishing and delivery.</p>
+
+        <h2 id="choosing">Choosing the Right Tool</h2>
+        <p>The choice between CAD and GIS software depends on the end use: engineering design and construction layout favour CAD's precision drafting tools, while asset management, spatial analysis and thematic mapping favour GIS's database and analysis capability. Many professional workflows use both together — CAD for the initial engineering plan, GIS for long-term data management.</p>
+
+        <div class="further-reading">
+          <h2>Further reading</h2>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Geographic_information_system" target="_blank" rel="noopener">Geographic information system — concepts and software</a> <span class="src">en.wikipedia.org</span></li>
+            <li><a href="https://archive.nptel.ac.in/courses/105/107/105107158/" target="_blank" rel="noopener">NPTEL: Digital Land Surveying and Mapping — Mapping module</a> <span class="src">archive.nptel.ac.in</span></li>
+          </ul>
+        </div>
+
+      </article>
+
+      <aside class="toc" aria-label="On this page">
+        <span class="label">On this page</span>
+        <ul>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#fundamentals">Mapping Fundamentals</a></li>
+          <li><a href="#software">Categories of Software</a></li>
+          <li><a href="#working-steps">Working Steps</a></li>
+          <li><a href="#detailing">Detailing Process</a></li>
+          <li><a href="#choosing">Choosing the Right Tool</a></li>
+        </ul>
+      </aside>
+
+    </div>
+
+    <div class="container">
+      <div class="co-pager">
+        <a class="pager-link" href="co4.html"><span class="dir">← Previous</span><span class="title">CO4 — Total Station Surveying</span></a>
+        <a class="pager-link next" href="references.html"><span class="dir">Next →</span><span class="title">Text &amp; Reference Books</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>Department of Civil Engineering · B.Tech. Semester VIII</span>
+      <span>Subject Code: BTCVE802T</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

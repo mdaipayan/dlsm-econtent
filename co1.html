@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CO1 — Fundamentals of Digital Land Surveying | DLSM E-Content</title>
+<meta name="description" content="CO1: Know the basics of digital land surveying and its applications — classification of surveying, the digital surveying concept, control points and advanced digital techniques." />
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,500,400&f[]=satoshi@400,500,700&f[]=jetbrains-mono@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-site-header>
+  <div class="container nav-bar">
+    <a class="brand" href="index.html" aria-label="Home">
+      <svg class="brand-mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="14.5" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
+        <circle cx="16" cy="16" r="9.5" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+        <circle cx="16" cy="16" r="2.6" fill="currentColor"/>
+        <path d="M16 2.5V6M16 26v3.5M2.5 16H6M26 16h3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-title">DLSM E-Content</span>
+        <span class="brand-sub">BTCVE802T · Civil Engg.</span>
+      </span>
+    </a>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <ul class="nav-links" data-nav-links>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="co1.html" aria-current="page">CO1</a></li>
+      <li><a href="co2.html">CO2</a></li>
+      <li><a href="co3.html">CO3</a></li>
+      <li><a href="co4.html">CO4</a></li>
+      <li><a href="co5.html">CO5</a></li>
+      <li><a href="references.html">References</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode"></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="co-hero">
+    <div class="container">
+      <div class="co-hero-top">
+        <span class="co-badge">CO1</span>
+        <span class="unit-tag">Unit I · Fundamentals of Surveying</span>
+      </div>
+      <h1>Fundamentals of Digital Land Surveying</h1>
+      <div class="outcome-box">
+        <span class="label">Course Outcome</span>
+        <p>CO1: Know the basics of digital land surveying and its applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+
+      <article class="prose">
+
+        <h2 id="introduction">Introduction</h2>
+        <p>Land surveying is the science of determining the relative positions of points on, above, or beneath the Earth's surface, and of establishing these points on the ground by angular and linear measurements. For centuries this meant chains, compasses and plane tables read and recorded entirely by hand. <strong>Digital land surveying</strong> replaces or augments these manual steps with electronic instruments, satellite signals and computer software — measurements are captured digitally in the field and processed, stored and mapped digitally in the office, cutting down both time and human error.</p>
+
+        <h2 id="classification">Classification of Surveying</h2>
+        <p>Surveying methods are broadly classified in two ways:</p>
+        <ul>
+          <li><strong>By the shape of the Earth considered:</strong> Plane surveying (Earth treated as a flat surface — valid for small areas) and Geodetic surveying (Earth's curvature accounted for — used for large areas and national control networks).</li>
+          <li><strong>By instruments/technique used:</strong> Chain surveying, compass surveying, plane table surveying, theodolite surveying, tacheometry, and modern digital methods (Total Station, GPS/GNSS, photogrammetry and remote sensing).</li>
+        </ul>
+        <p>Digital techniques sit at the top of this progression — they do not change what is being measured (distances, angles, elevations) but change how accurately, quickly and reliably it is captured and recorded.</p>
+
+        <h2 id="digital-concept">The Digital Surveying Concept</h2>
+        <p>A digital survey workflow has three stages:</p>
+        <ol>
+          <li><strong>Data capture:</strong> Instruments such as a Total Station or GPS receiver measure angles, distances or coordinates and store them electronically instead of in a field book.</li>
+          <li><strong>Data transfer &amp; processing:</strong> Captured data is downloaded to a computer where survey software corrects, adjusts and organises it (this is often called "field-to-finish").</li>
+          <li><strong>Data output:</strong> The processed data is turned into digital maps, contour plans, or 3D terrain models that can be edited, queried and shared electronically.</li>
+        </ol>
+        <p>This digital chain removes repeated manual transcription — a major source of error in traditional surveying — and makes the resulting data directly usable in design and GIS software.</p>
+
+        <h2 id="control-points">Control Points</h2>
+        <p>Every survey, however small, is built on a framework of <strong>control points</strong> — points whose horizontal position and/or elevation are known with high precision and which act as fixed references for all subsequent detail measurements.</p>
+        <div class="error-grid">
+          <div class="error-item"><span class="tag">Horizontal control</span><p>Fixes the plan position (X, Y or latitude/longitude) of reference stations, usually established by traversing, triangulation or GPS.</p></div>
+          <div class="error-item"><span class="tag">Vertical control</span><p>Fixes the elevation (Z) of reference stations through levelling or GPS/GNSS heighting, forming the basis for contours and grading.</p></div>
+          <div class="error-item"><span class="tag">Benchmarks</span><p>Permanent, physically marked points of known elevation used to check and re-establish control over time.</p></div>
+        </div>
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 220" role="img" aria-label="Diagram showing a network of control points connected by traverse lines with detail points measured from them">
+            <g stroke="var(--color-text-faint)" stroke-width="1.2" fill="none" stroke-dasharray="4 5">
+              <polygon points="90,170 220,60 400,70 520,160" />
+            </g>
+            <g fill="var(--color-primary)">
+              <circle cx="90" cy="170" r="6"/><circle cx="220" cy="60" r="6"/>
+              <circle cx="400" cy="70" r="6"/><circle cx="520" cy="160" r="6"/>
+            </g>
+            <g fill="var(--color-amber)">
+              <circle cx="160" cy="130" r="3.5"/><circle cx="300" cy="110" r="3.5"/>
+              <circle cx="250" cy="160" r="3.5"/><circle cx="440" cy="130" r="3.5"/>
+            </g>
+            <g stroke="var(--color-text-faint)" stroke-width="0.8">
+              <line x1="90" y1="170" x2="160" y2="130"/>
+              <line x1="220" y1="60" x2="300" y2="110"/>
+              <line x1="220" y1="60" x2="250" y2="160"/>
+              <line x1="400" y1="70" x2="440" y2="130"/>
+            </g>
+            <text x="90" y="195" font-size="11" fill="var(--color-text-muted)" text-anchor="middle">CP-1</text>
+            <text x="220" y="45" font-size="11" fill="var(--color-text-muted)" text-anchor="middle">CP-2</text>
+            <text x="400" y="55" font-size="11" fill="var(--color-text-muted)" text-anchor="middle">CP-3</text>
+            <text x="520" y="180" font-size="11" fill="var(--color-text-muted)" text-anchor="middle">CP-4</text>
+          </svg>
+          <figcaption>Control points (blue) form the survey framework; detail points (amber) are measured relative to them.</figcaption>
+        </figure>
+
+        <h2 id="advanced-methods">Advanced Digital Surveying Methods</h2>
+        <p>Beyond GPS and Total Station (covered in later modules), several newer technologies extend digital surveying to large or difficult-to-access areas:</p>
+        <ul>
+          <li><strong>LiDAR (Light Detection and Ranging):</strong> An airborne or ground-based laser scanner that records millions of 3D points per second, producing a dense point cloud of the terrain and any structures on it.</li>
+          <li><strong>UAV / Drone Photogrammetry:</strong> Overlapping aerial photographs captured by a drone are processed using structure-from-motion software to generate orthomosaics, digital elevation models and 3D models — much faster than ground survey for large sites.</li>
+          <li><strong>Mobile Mapping Systems:</strong> Vehicle- or backpack-mounted GNSS, cameras and laser scanners capture geospatial data continuously while moving, useful for corridor mapping (roads, rail, utilities).</li>
+        </ul>
+
+        <div class="callout">
+          <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></span>
+          <div>
+            <strong>Why it matters</strong>
+            <p>Choice of method depends on required accuracy, area size, terrain accessibility and turnaround time — a small building layout may still use a Total Station, while a highway corridor is better served by UAV photogrammetry or mobile mapping.</p>
+          </div>
+        </div>
+
+        <h2 id="applications">Applications</h2>
+        <p>Digital land surveying underpins topographic mapping, cadastral (land parcel) surveys, construction layout and as-built surveys, highway and railway alignment, hydrographic surveys, mining volume computation, and the geospatial base data used in Geographic Information Systems (GIS).</p>
+
+        <div class="further-reading">
+          <h2>Further reading</h2>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Surveying" target="_blank" rel="noopener">Surveying — overview of classification and methods</a> <span class="src">en.wikipedia.org</span></li>
+            <li><a href="https://archive.nptel.ac.in/courses/105/107/105107158/" target="_blank" rel="noopener">NPTEL: Digital Land Surveying and Mapping (IIT Roorkee)</a> <span class="src">archive.nptel.ac.in</span></li>
+          </ul>
+        </div>
+
+      </article>
+
+      <aside class="toc" aria-label="On this page">
+        <span class="label">On this page</span>
+        <ul>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#classification">Classification of Surveying</a></li>
+          <li><a href="#digital-concept">The Digital Surveying Concept</a></li>
+          <li><a href="#control-points">Control Points</a></li>
+          <li><a href="#advanced-methods">Advanced Digital Methods</a></li>
+          <li><a href="#applications">Applications</a></li>
+        </ul>
+      </aside>
+
+    </div>
+
+    <div class="container">
+      <div class="co-pager">
+        <a class="pager-link" href="index.html"><span class="dir">← Back to</span><span class="title">Course Home</span></a>
+        <a class="pager-link next" href="co2.html"><span class="dir">Next module →</span><span class="title">CO2 — Global Positioning System</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>Department of Civil Engineering · B.Tech. Semester VIII</span>
+      <span>Subject Code: BTCVE802T</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

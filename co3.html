@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CO3 — Differential GPS (DGPS) | DLSM E-Content</title>
+<meta name="description" content="CO3: Know the use of DGPS and its applications and advantages — differential correction principle, base-and-rover working, control station setup and loop closure." />
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,500,400&f[]=satoshi@400,500,700&f[]=jetbrains-mono@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-site-header>
+  <div class="container nav-bar">
+    <a class="brand" href="index.html" aria-label="Home">
+      <svg class="brand-mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="14.5" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
+        <circle cx="16" cy="16" r="9.5" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+        <circle cx="16" cy="16" r="2.6" fill="currentColor"/>
+        <path d="M16 2.5V6M16 26v3.5M2.5 16H6M26 16h3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-title">DLSM E-Content</span>
+        <span class="brand-sub">BTCVE802T · Civil Engg.</span>
+      </span>
+    </a>
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <ul class="nav-links" data-nav-links>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="co1.html">CO1</a></li>
+      <li><a href="co2.html">CO2</a></li>
+      <li><a href="co3.html" aria-current="page">CO3</a></li>
+      <li><a href="co4.html">CO4</a></li>
+      <li><a href="co5.html">CO5</a></li>
+      <li><a href="references.html">References</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode"></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="co-hero">
+    <div class="container">
+      <div class="co-hero-top">
+        <span class="co-badge">CO3</span>
+        <span class="unit-tag">Unit III · Differential GPS</span>
+      </div>
+      <h1>Differential GPS (DGPS)</h1>
+      <div class="outcome-box">
+        <span class="label">Course Outcome</span>
+        <p>CO3: Know the use of DGPS and its applications and advantages.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+
+      <article class="prose">
+
+        <h2 id="introduction">Introduction</h2>
+        <p>Standalone GPS position fixes carry several metres of error from satellite clock, orbit, and atmospheric effects. Differential GPS (DGPS) is a technique that removes most of these errors by comparing observations from two receivers, boosting positioning accuracy from several metres down to sub-metre or even centimetre level — essential for engineering-grade surveying.</p>
+
+        <h2 id="principle">Differential Correction Principle</h2>
+        <p>DGPS uses a <strong>base station</strong> set up on a point whose exact coordinates are already known, and one or more <strong>rover</strong> receivers moving over the area to be surveyed. Because both receivers see largely the same satellites through nearly the same atmosphere, most error sources (satellite clock, ephemeris, ionospheric and tropospheric delay) affect them almost identically.</p>
+        <p>The base station computes the difference between its known position and the position GPS alone gives it — this difference is the <strong>correction</strong>. That correction is transmitted to the rover and applied to the rover's own GPS solution, cancelling out the shared error.</p>
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 240" role="img" aria-label="Diagram showing a GPS base station broadcasting a correction signal to a rover receiver">
+            <g fill="var(--color-primary)">
+              <circle cx="150" cy="40" r="6"/><circle cx="420" cy="30" r="6"/>
+            </g>
+            <g stroke="var(--color-text-faint)" stroke-width="1" stroke-dasharray="3 5">
+              <line x1="150" y1="40" x2="140" y2="150"/>
+              <line x1="420" y1="30" x2="140" y2="150"/>
+              <line x1="150" y1="40" x2="460" y2="170"/>
+              <line x1="420" y1="30" x2="460" y2="170"/>
+            </g>
+            <g>
+              <rect x="110" y="150" width="60" height="34" rx="4" fill="var(--color-amber-highlight)" stroke="var(--color-amber)"/>
+              <text x="140" y="172" font-size="10" text-anchor="middle" fill="var(--color-amber)">Base</text>
+              <text x="140" y="200" font-size="9" text-anchor="middle" fill="var(--color-text-muted)">Known point</text>
+            </g>
+            <g>
+              <rect x="430" y="150" width="60" height="34" rx="4" fill="var(--color-primary-highlight)" stroke="var(--color-primary)"/>
+              <text x="460" y="172" font-size="10" text-anchor="middle" fill="var(--color-primary)">Rover</text>
+              <text x="460" y="200" font-size="9" text-anchor="middle" fill="var(--color-text-muted)">Unknown point</text>
+            </g>
+            <path d="M175 168 C 260 120, 340 120, 425 168" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="var(--color-success)"/>
+              </marker>
+            </defs>
+            <text x="300" y="105" font-size="10" text-anchor="middle" fill="var(--color-success)">correction broadcast</text>
+          </svg>
+          <figcaption>The base station (known position) computes and broadcasts a correction that the rover applies to its own fix.</figcaption>
+        </figure>
+
+        <h2 id="working">DGPS Working — Real-Time vs Post-Processed</h2>
+        <ul>
+          <li><strong>Real-time DGPS:</strong> The base station broadcasts corrections continuously (e.g. via RTCM radio link, mobile data, or satellite) and the rover applies them instantly, giving corrected coordinates in the field immediately.</li>
+          <li><strong>Post-processed DGPS:</strong> Both base and rover simply log raw data; corrections are computed and applied afterwards in office software. Useful when no real-time communication link is available.</li>
+        </ul>
+
+        <h2 id="control-station">Control Station Set-up</h2>
+        <p>Setting up a reliable base/control station is critical to DGPS accuracy:</p>
+        <ol>
+          <li>Choose a stable, open-sky location free from overhead obstructions and multipath sources (buildings, metal structures, water bodies).</li>
+          <li>Occupy a point with known or precisely surveyed coordinates — ideally an existing benchmark or a point observed for an extended session.</li>
+          <li>Level and centre the receiver antenna accurately, and record antenna height.</li>
+          <li>Log data continuously for the duration of the rover's survey session so corrections are available throughout.</li>
+        </ol>
+
+        <h2 id="loop-closure">Loop Closure</h2>
+        <p>To verify the accuracy of a control traverse, surveyors use the <strong>loop closure</strong> technique: the traverse starts and ends at the same known control point (or two known points). Since the true coordinates of the start/end point are known, any difference between the computed and known values — the <strong>misclosure error</strong> — reveals the accumulated error in the survey. This misclosure is then distributed proportionally across all traverse stations (e.g. by the Bowditch/compass rule) to produce adjusted, self-consistent coordinates.</p>
+
+        <h2 id="advantages">Advantages Over Standalone GPS</h2>
+        <table class="data-table">
+          <thead><tr><th>Parameter</th><th>Standalone GPS</th><th>DGPS</th></tr></thead>
+          <tbody>
+            <tr><td>Typical accuracy</td><td>5–10 m</td><td>Sub-metre to a few centimetres</td></tr>
+            <tr><td>Error cancellation</td><td>None</td><td>Cancels satellite clock, ephemeris, ionospheric/tropospheric error</td></tr>
+            <tr><td>Suitability for engineering survey</td><td>Reconnaissance only</td><td>Suitable for control and detail surveys</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></span>
+          <div>
+            <strong>Applications</strong>
+            <p>DGPS is widely used for topographic and cadastral surveys, precision agriculture, marine navigation and dredging, and as the reference correction source for RTK GPS surveying.</p>
+          </div>
+        </div>
+
+        <div class="further-reading">
+          <h2>Further reading</h2>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Differential_GPS" target="_blank" rel="noopener">Differential GNSS — principle and applications</a> <span class="src">en.wikipedia.org</span></li>
+            <li><a href="https://archive.nptel.ac.in/courses/105/107/105107158/" target="_blank" rel="noopener">NPTEL: Digital Land Surveying and Mapping — DGPS module</a> <span class="src">archive.nptel.ac.in</span></li>
+          </ul>
+        </div>
+
+      </article>
+
+      <aside class="toc" aria-label="On this page">
+        <span class="label">On this page</span>
+        <ul>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#principle">Differential Correction Principle</a></li>
+          <li><a href="#working">DGPS Working</a></li>
+          <li><a href="#control-station">Control Station Set-up</a></li>
+          <li><a href="#loop-closure">Loop Closure</a></li>
+          <li><a href="#advantages">Advantages Over GPS</a></li>
+        </ul>
+      </aside>
+
+    </div>
+
+    <div class="container">
+      <div class="co-pager">
+        <a class="pager-link" href="co2.html"><span class="dir">← Previous</span><span class="title">CO2 — Global Positioning System</span></a>
+        <a class="pager-link next" href="co4.html"><span class="dir">Next module →</span><span class="title">CO4 — Total Station Surveying</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>Department of Civil Engineering · B.Tech. Semester VIII</span>
+      <span>Subject Code: BTCVE802T</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
