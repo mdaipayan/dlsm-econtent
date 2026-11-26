@@ -45,3 +45,7 @@ No further configuration is required — the site has no server-side code and wo
 ## Attribution
 
 Course Outcomes are quoted verbatim from the BTCVE802T syllabus. External further-reading links cite NPTEL and Wikipedia; see each page's "Further reading" section for exact sources.
+
+## Developer
+
+Developed by **Daipayan Mandal**, Assistant Professor, Department of Civil Engineering, Kavikulguru Institute of Technology and Science (KITS), Ramtek.
