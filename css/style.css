@@ -589,3 +589,13 @@ table.data-table tr:last-child td { border-bottom: none; }
   .ia-controls label > span { white-space: nowrap; }
   .ia-controls label { flex-wrap: wrap; }
 }
+
+/* ===== Need for surveying: picture cards ===== */
+.need-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+.need-card { margin: 0; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-4); }
+.need-card svg { width: 100%; height: auto; display: block; margin-bottom: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface-offset); }
+.need-card .p-tag { display: inline-block; font-weight: 700; font-size: var(--text-xs); color: var(--color-primary); background: var(--color-primary-highlight); border-radius: var(--radius-full); padding: 2px 10px; margin-bottom: var(--space-2); }
+.need-card .need-title { font-weight: 700; color: var(--color-text); margin: 0 0 var(--space-1); }
+.need-card p { font-size: var(--text-sm); margin: 0; }
+.need-card p:last-child { color: var(--color-text-muted); }
+.callout b.pp { display: inline; color: var(--color-primary); font-weight: 700; }
