@@ -53,7 +53,7 @@
     <div class="container">
       <div class="co-hero-top">
         <span class="co-badge">CO1</span>
-        <span class="unit-tag">Unit I · Fundamentals of Surveying</span>
+        <span class="unit-tag">Unit I · Introduction to Surveying</span>
       </div>
       <h1>Fundamentals of Digital Land Surveying</h1>
       <div class="outcome-box">
@@ -71,13 +71,38 @@
         <h2 id="introduction">Introduction</h2>
         <p>Land surveying is the science of determining the relative positions of points on, above, or beneath the Earth's surface, and of establishing these points on the ground by angular and linear measurements. For centuries this meant chains, compasses and plane tables read and recorded entirely by hand. <strong>Digital land surveying</strong> replaces or augments these manual steps with electronic instruments, satellite signals and computer software — measurements are captured digitally in the field and processed, stored and mapped digitally in the office, cutting down both time and human error.</p>
 
-        <h2 id="classification">Classification of Surveying</h2>
-        <p>Surveying methods are broadly classified in two ways:</p>
+        <p>Surveying works in two directions. A <strong>survey</strong> measures what is on the ground and draws it as a map, plan or section. <strong>Setting out</strong> does the reverse: it takes positions from a design drawing and marks them on the ground, for example the column grid of a building or the centre line of a road.</p>
+
+        <h2 id="need">Need for Surveying</h2>
+        <p>Every civil engineering project starts with a survey and ends with setting out: you cannot design what you have not measured.</p>
         <ul>
-          <li><strong>By the shape of the Earth considered:</strong> Plane surveying (Earth treated as a flat surface — valid for small areas) and Geodetic surveying (Earth's curvature accounted for — used for large areas and national control networks).</li>
-          <li><strong>By instruments/technique used:</strong> Chain surveying, compass surveying, plane table surveying, theodolite surveying, tacheometry, and modern digital methods (Total Station, GPS/GNSS, photogrammetry and remote sensing).</li>
+          <li><strong>Planning and design:</strong> roads, canals, buildings and pipelines are designed on survey maps, levels and sections.</li>
+          <li><strong>Quantities and cost:</strong> areas, earthwork volumes and gradients are calculated from survey data.</li>
+          <li><strong>Construction:</strong> the design is transferred to the site by setting out, and the finished work is checked by an as-built survey.</li>
+          <li><strong>Land ownership:</strong> property boundaries and land records are fixed and settled by survey (cadastral survey).</li>
+          <li><strong>Monitoring:</strong> settlement of dams, deflection of bridges and movement of slopes are found by repeated surveys.</li>
         </ul>
-        <p>Digital techniques sit at the top of this progression — they do not change what is being measured (distances, angles, elevations) but change how accurately, quickly and reliably it is captured and recorded.</p>
+
+        <h3>Two principles of surveying</h3>
+        <ol>
+          <li><strong>Work from the whole to the part.</strong> First fix a frame of accurate main points (control), then fill in the details. Errors then stay inside small parts and do not build up across the whole area.</li>
+          <li><strong>Fix every new point by at least two independent measurements</strong> from points already known, for example two distances, or one distance and one angle. The second measurement also checks the first.</li>
+        </ol>
+        <p>Digital instruments change how points are measured and recorded. These two principles do not change.</p>
+
+        <h2 id="classification">Classification of Surveying</h2>
+        <p>The same survey can be named in four ways, depending on the question asked:</p>
+        <table class="data-table">
+          <thead><tr><th>Basis</th><th>Types</th></tr></thead>
+          <tbody>
+            <tr><td>Earth's curvature</td><td><strong>Plane surveying</strong>: Earth's surface taken as flat; for small areas such as a campus, a site or a town road. <strong>Geodetic surveying</strong>: Earth's curvature taken into account; for large areas, states and national control networks.</td></tr>
+            <tr><td>Place of work</td><td>Land survey · hydrographic survey (rivers, reservoirs, sea, ports) · underground survey (mines, tunnels) · aerial survey (aircraft, drones) · astronomical survey (sun and stars).</td></tr>
+            <tr><td>Purpose</td><td>Engineering survey (design, setting out) · cadastral survey (property boundaries) · topographic survey (natural and built features with heights) · control survey (accurate main points) · route survey (roads, railways, canals, pipelines) · mine, geological and archaeological surveys.</td></tr>
+            <tr><td>Instrument / method</td><td><em>Conventional</em>: chain and tape, compass, plane table, theodolite, levelling, tacheometry. <em>Digital</em>: total station, GPS/GNSS, drone photogrammetry, laser scanning, remote sensing.</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Example:</strong> a drone survey of village houses for property cards is a plane survey, an aerial survey, a cadastral survey and a photogrammetric survey, all at the same time.</p>
+        <p>Digital techniques sit at the top of the instrument column. They do not change what is measured (distances, angles, heights). They change how accurately, quickly and reliably it is captured and recorded.</p>
 
         <h2 id="digital-concept">The Digital Surveying Concept</h2>
         <p>A digital survey workflow has three stages:</p>
@@ -87,6 +112,26 @@
           <li><strong>Data output:</strong> The processed data is turned into digital maps, contour plans, or 3D terrain models that can be edited, queried and shared electronically.</li>
         </ol>
         <p>This digital chain removes repeated manual transcription — a major source of error in traditional surveying — and makes the resulting data directly usable in design and GIS software.</p>
+
+        <h3 id="advantages">Conventional vs digital land surveying</h3>
+        <table class="data-table">
+          <thead><tr><th>Point</th><th>Conventional (chain, compass, plane table, theodolite)</th><th>Digital (total station, GNSS, drone)</th></tr></thead>
+          <tbody>
+            <tr><td>Recording</td><td>Hand-written field book; booking errors possible</td><td>Stored automatically with point codes</td></tr>
+            <tr><td>Speed and team</td><td>Slow; needs more people</td><td>Fast; often one or two people</td></tr>
+            <tr><td>Accuracy</td><td>Limited by tape, reading and plotting</td><td>Millimetres (total station) to centimetres (DGPS/RTK)</td></tr>
+            <tr><td>Plotting</td><td>By hand on paper</td><td>Automatic in CAD/GIS software</td></tr>
+            <tr><td>Changes and copies</td><td>Redraw the map</td><td>Edit, re-plot and share any time</td></tr>
+            <tr><td>Large or hilly areas</td><td>Difficult and slow</td><td>GNSS and drones cover them easily</td></tr>
+          </tbody>
+        </table>
+        <div class="callout">
+          <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></span>
+          <div>
+            <strong>Limitations to remember</strong>
+            <p>Digital instruments are costly and need trained operators. GNSS works poorly under trees, near tall buildings and indoors. A wrong setting (instrument height, prism constant, coordinate system) gives wrong results that still look correct, so field checks remain essential.</p>
+          </div>
+        </div>
 
         <figure class="diagram-card">
           <svg viewBox="0 0 600 170" role="img" aria-label="Flow diagram of the three-stage digital survey workflow: data capture, transfer and processing, and data output">
@@ -157,12 +202,49 @@
           <figcaption>Control points (blue) form the survey framework; detail points (amber) are measured relative to them.</figcaption>
         </figure>
 
+        <h3 id="establishment">Establishment of control points</h3>
+        <p>Control is built in three levels, each tied to the one above it:</p>
+        <ol>
+          <li><strong>National control:</strong> the Survey of India geodetic network, GTS benchmarks, and the network of permanent GNSS reference stations (CORS).</li>
+          <li><strong>Project control:</strong> a few accurate points around the project area, tied to national control.</li>
+          <li><strong>Working control:</strong> points close to the work (for example near each building block), used for detail survey and setting out.</li>
+        </ol>
+        <p>Steps to establish control points for a new project:</p>
+        <ol>
+          <li><strong>Reconnaissance:</strong> walk the area; study toposheets, old records and satellite images.</li>
+          <li><strong>Select locations:</strong> firm ground, safe from traffic and future construction, open sky for GNSS, clear view to neighbouring points for a total station, good spread over the area.</li>
+          <li><strong>Monument:</strong> build a concrete pillar or pedestal with a metal marker; number, paint and protect it.</li>
+          <li><strong>Observe:</strong> by GNSS static observation or a closed traverse, starting from known national control where possible.</li>
+          <li><strong>Compute and adjust:</strong> calculate coordinates and heights, check the closing error, and adjust.</li>
+          <li><strong>Record:</strong> prepare a <em>description card</em> for every point (number, coordinates, height, a sketch with distances to nearby fixed objects, photo) so anyone can find and use it later.</li>
+        </ol>
+        <p>Keep at least three control points that can be used together, so every instrument set-up can be checked. Check old control points before using them: pillars get disturbed.</p>
+
         <h2 id="advanced-methods">Advanced Digital Surveying Methods</h2>
         <p>Beyond GPS and Total Station (covered in later modules), several newer technologies extend digital surveying to large or difficult-to-access areas:</p>
         <ul>
           <li><strong>LiDAR (Light Detection and Ranging):</strong> An airborne or ground-based laser scanner that records millions of 3D points per second, producing a dense point cloud of the terrain and any structures on it.</li>
           <li><strong>UAV / Drone Photogrammetry:</strong> Overlapping aerial photographs captured by a drone are processed using structure-from-motion software to generate orthomosaics, digital elevation models and 3D models — much faster than ground survey for large sites.</li>
           <li><strong>Mobile Mapping Systems:</strong> Vehicle- or backpack-mounted GNSS, cameras and laser scanners capture geospatial data continuously while moving, useful for corridor mapping (roads, rail, utilities).</li>
+          <li><strong>Satellite remote sensing:</strong> Images of the Earth in many wavelengths, used for land-use maps, flood extent and urban growth over large areas. Too coarse for engineering setting out.</li>
+        </ul>
+
+        <table class="data-table">
+          <thead><tr><th>Method</th><th>How it measures</th><th>Typical accuracy</th><th>Best for</th></tr></thead>
+          <tbody>
+            <tr><td>GNSS (GPS, NavIC and others)</td><td>Distances to satellites from their signals</td><td>Metres (handheld) to 1–3 cm (DGPS/RTK)</td><td>Control points, large open areas</td></tr>
+            <tr><td>Total station</td><td>Angles + EDM distance to a prism</td><td>Millimetres</td><td>Detail survey, setting out, monitoring</td></tr>
+            <tr><td>Drone photogrammetry</td><td>Overlapping aerial photos</td><td>A few cm with ground control</td><td>Villages, mines, stockpiles, corridors</td></tr>
+            <tr><td>LiDAR / laser scanning</td><td>Laser pulses, millions of points</td><td>mm to cm</td><td>Buildings, bridges, tunnels, terrain under trees</td></tr>
+            <tr><td>Satellite remote sensing</td><td>Images from satellites</td><td>Metres (depends on satellite)</td><td>Land use, change detection, regional planning</td></tr>
+          </tbody>
+        </table>
+
+        <h3 id="india">Digital surveying in India today</h3>
+        <ul>
+          <li><strong>CORS network:</strong> Survey of India runs permanent GNSS reference stations that send corrections in real time, so a surveyor does not need a base station of their own. The service gives real-time RTK positioning with an accuracy of about ±3 cm, and the Surveyor General reported 1,145 CORS stations in February 2026.</li>
+          <li><strong>SVAMITVA scheme:</strong> village residential areas are mapped by drone so that owners get legal property cards. By 6 August 2025, drone survey was complete in 3.26 lakh of the 3.44 lakh targeted villages, and 2.63 crore property cards had been prepared.</li>
+          <li><strong>NavIC:</strong> India's own regional satellite navigation system, used together with GPS and other GNSS in modern receivers.</li>
         </ul>
 
         <div class="callout">
@@ -180,7 +262,7 @@
         <div class="quiz-card" data-quiz>
           <div class="quiz-head">
             <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO1</h3>
-            <span class="quiz-score" data-quiz-score>Score: 0/4</span>
+            <span class="quiz-score" data-quiz-score>Score: 0/7</span>
           </div>
           <div class="quiz-questions" data-quiz-questions></div>
           <div class="quiz-footer" data-quiz-footer hidden>
@@ -232,6 +314,39 @@
     ],
     "correct": 0,
     "explain": "LiDAR records millions of 3D points per second, producing a dense point cloud of the terrain and any structures on it."
+  },
+  {
+    "q": "\"Work from the whole to the part\" means:",
+    "options": [
+      "Survey the details first, then the boundary",
+      "Fix accurate control points first, then fill in the details",
+      "Measure every point twice",
+      "Use the largest instrument available"
+    ],
+    "correct": 1,
+    "explain": "A frame of accurate control is fixed first; details are then measured from it, so errors stay inside small parts and do not accumulate."
+  },
+  {
+    "q": "A drone survey of village houses for property cards is, by purpose, a:",
+    "options": [
+      "Hydrographic survey",
+      "Geodetic survey",
+      "Cadastral survey",
+      "Route survey"
+    ],
+    "correct": 2,
+    "explain": "Cadastral surveys fix property boundaries and ownership; the SVAMITVA scheme uses drones for exactly this."
+  },
+  {
+    "q": "What must be prepared for every control point so others can find and reuse it?",
+    "options": [
+      "A description card with coordinates, a sketch and ties to nearby objects",
+      "Only a painted number",
+      "A photograph of the survey team",
+      "Nothing; GNSS makes it unnecessary"
+    ],
+    "correct": 0,
+    "explain": "The description card records the number, coordinates, height, sketch, distances to fixed objects and a photo of the point."
   }
 ]
           </script>
@@ -242,6 +357,9 @@
           <ul>
             <li><a href="https://en.wikipedia.org/wiki/Surveying" target="_blank" rel="noopener">Surveying — overview of classification and methods</a> <span class="src">en.wikipedia.org</span></li>
             <li><a href="https://archive.nptel.ac.in/courses/105/107/105107158/" target="_blank" rel="noopener">NPTEL: Digital Land Surveying and Mapping (IIT Roorkee)</a> <span class="src">archive.nptel.ac.in</span></li>
+            <li><a href="https://surveyofindia.gov.in/webroot/UserFiles/files/Note%20on%20RTK%20and%20CORS.pdf" target="_blank" rel="noopener">Survey of India: Note on RTK and CORS</a> <span class="src">surveyofindia.gov.in</span></li>
+            <li><a href="https://ggim.un.org/meetings/2026/Vienna/documents/IND_IGIF.pdf" target="_blank" rel="noopener">Surveyor General of India, UN-GGIM presentation (Feb 2026): CORS count</a> <span class="src">ggim.un.org</span></li>
+            <li><a href="https://eparlib.sansad.in/bitstream/123456789/2995493/1/AU3747_2uhiCX.pdf" target="_blank" rel="noopener">Lok Sabha answer on SVAMITVA drone survey (Aug 2025)</a> <span class="src">eparlib.sansad.in</span></li>
             <li><a href="slow-learner.html#co1">Need a simpler recap?</a> <span class="src">Slow Learner e-content</span></li>
             <li><a href="advanced-learner.html#co1">Want an extension challenge?</a> <span class="src">Advanced Learner e-content</span></li>
           </ul>
@@ -253,10 +371,14 @@
         <span class="label">On this page</span>
         <ul>
           <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#need">Need &amp; Principles</a></li>
           <li><a href="#classification">Classification of Surveying</a></li>
           <li><a href="#digital-concept">The Digital Surveying Concept</a></li>
+          <li><a href="#advantages">Conventional vs Digital</a></li>
           <li><a href="#control-points">Control Points</a></li>
+          <li><a href="#establishment">Establishing Control</a></li>
           <li><a href="#advanced-methods">Advanced Digital Methods</a></li>
+          <li><a href="#india">Digital Surveying in India</a></li>
           <li><a href="#applications">Applications</a></li>
           <li><a href="#quiz">Quick Check</a></li>
         </ul>

@@ -134,6 +134,24 @@
           <figcaption>The instrument measures horizontal angle, vertical angle and slope distance to the prism in one sighting.</figcaption>
         </figure>
 
+        <h2 id="accessories">Accessories of a Total Station</h2>
+        <table class="data-table">
+          <thead><tr><th>Accessory</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Tripod (wooden or aluminium)</td><td>Firm stand for the instrument; legs pressed well into the ground</td></tr>
+            <tr><td>Tribrach with optical/laser plummet</td><td>Levelling base with three foot screws; lets the instrument or a prism be centred and swapped without moving the tripod</td></tr>
+            <tr><td>Prisms (single, triple, 360&deg;)</td><td>Reflect the EDM signal back; more prisms give a longer range. Each prism has a <em>prism constant</em> that must be set in the instrument</td></tr>
+            <tr><td>Prism pole with circular bubble</td><td>Holds the prism vertically over a detail point; its height (target height) is read from the graduated pole</td></tr>
+            <tr><td>Reflective sheet targets</td><td>Small stick-on targets for monitoring points and short distances</td></tr>
+            <tr><td>Data collector / controller and memory card</td><td>Field software, job files, point codes; transfer data to the computer</td></tr>
+            <tr><td>Batteries and charger</td><td>Power for a full day of work; carry spares</td></tr>
+            <tr><td>Measuring tape</td><td>To measure the instrument height (HI)</td></tr>
+            <tr><td>Thermometer and barometer</td><td>Temperature and pressure for the EDM atmospheric correction</td></tr>
+            <tr><td>Two-way radios, umbrella, carrying case</td><td>Communication with the prism person; protect the instrument from sun, rain and shocks</td></tr>
+          </tbody>
+        </table>
+        <p>Many modern instruments can also measure <strong>reflectorless</strong> (without a prism) to walls and inaccessible points, over a shorter range.</p>
+
         <h2 id="setup">Setting-Up Procedure</h2>
         <ol>
           <li><strong>Centring:</strong> Position the tripod so the instrument is exactly over the ground station mark, using the optical/laser plummet.</li>
@@ -142,18 +160,72 @@
           <li><strong>Job/point setup:</strong> Create or select a job file, and enter point codes/descriptions for the features to be surveyed.</li>
         </ol>
 
-        <h2 id="measurement">Measurement Principle</h2>
-        <p>Once oriented, the total station computes the 3D coordinates of every observed point through simple trigonometry:</p>
+        <h2 id="measurement">Measurement of Distance, Angles and Height</h2>
+        <p>Once set up and oriented, every sighting gives three readings: horizontal angle, vertical (zenith) angle and slope distance. Everything else is computed from them.</p>
+
+        <h3>1. Distance (EDM)</h3>
+        <p>The EDM sends an infrared or laser beam to the prism and measures the returned signal. <em>Phase-shift</em> EDMs compare the phase of the sent and received waves; <em>pulse</em> (time-of-flight) EDMs measure the travel time. Distance = (speed of light &times; travel time) &divide; 2. Before measuring, set the <strong>prism constant</strong> and the <strong>atmospheric correction</strong> (from temperature and pressure, given in ppm), otherwise every distance is wrong by the same amount.</p>
+
+        <h3>2. Horizontal angle</h3>
+        <p>Set the station coordinates and sight a known backsight point; the instrument sets its horizontal circle to the backsight bearing. Every later reading is then a <strong>bearing</strong> (whole-circle bearing) from north. Measure important angles on <em>both faces</em> and take the mean.</p>
+
+        <h3>3. Vertical angle</h3>
+        <p>Total stations read the <strong>zenith angle Z</strong> (0&deg; straight up, 90&deg; level). Vertical angle above the horizontal = 90&deg; &minus; Z.</p>
+
+        <h3>4. Height and coordinates</h3>
+        <p>With slope distance SD, zenith angle Z, instrument height HI and target (prism) height HT:</p>
         <ul>
-          <li><strong>Distance:</strong> The EDM measures the time (or phase shift) of an infrared/laser pulse travelling to the prism and back, converting it to slope distance.</li>
-          <li><strong>Angles:</strong> Electronic angle encoders in the horizontal and vertical circles measure the direction of the line of sight relative to the backsight.</li>
-          <li><strong>Coordinates:</strong> The instrument resolves slope distance and vertical angle into horizontal distance and elevation difference (trigonometric levelling), then combines this with the horizontal angle to compute the point's easting, northing and elevation — all automatically, in real time.</li>
+          <li>Horizontal distance: <strong>HD = SD &times; sin Z</strong></li>
+          <li>Vertical difference: <strong>VD = SD &times; cos Z</strong></li>
+          <li>Reduced level of the point: <strong>RL<sub>P</sub> = RL<sub>station</sub> + HI + VD &minus; HT</strong></li>
+          <li>Coordinates: <strong>E<sub>P</sub> = E<sub>station</sub> + HD &times; sin(bearing)</strong>, &nbsp; <strong>N<sub>P</sub> = N<sub>station</sub> + HD &times; cos(bearing)</strong></li>
         </ul>
+        <figure class="diagram-card">
+          <svg viewBox="0 0 600 240" role="img" aria-label="Side view of a total station measuring slope distance and zenith angle to a prism, with instrument height, target height and horizontal distance labelled">
+            <g stroke="var(--color-text-faint)" stroke-width="1.2"><line x1="40" y1="210" x2="560" y2="200"/></g>
+            <rect x="96" y="120" width="28" height="30" rx="4" fill="var(--color-primary)"/>
+            <g stroke="var(--color-text-muted)" stroke-width="1.5"><line x1="110" y1="150" x2="92" y2="208"/><line x1="110" y1="150" x2="128" y2="208"/></g>
+            <line x1="470" y1="70" x2="470" y2="202" stroke="var(--color-text-muted)" stroke-width="2"/>
+            <circle cx="470" cy="70" r="9" fill="var(--color-amber)"/>
+            <line x1="110" y1="130" x2="462" y2="72" stroke="var(--color-amber)" stroke-width="1.8"/>
+            <line x1="110" y1="130" x2="470" y2="130" stroke="var(--color-text-faint)" stroke-dasharray="4 4"/>
+            <line x1="110" y1="130" x2="110" y2="40" stroke="var(--color-text-faint)" stroke-dasharray="4 4"/>
+            <path d="M110 70 A60 60 0 0 1 168 120" fill="none" stroke="var(--color-primary)" stroke-width="1.4"/>
+            <g font-size="11" fill="var(--color-text-muted)">
+              <text x="150" y="78" fill="var(--color-primary)" font-weight="700">Z</text>
+              <text x="230" y="70" fill="var(--color-amber)" font-weight="700">SD (slope distance)</text>
+              <text x="280" y="148">HD = SD sin Z</text>
+              <text x="478" y="105">VD = SD cos Z</text>
+              <text x="478" y="170">HT (prism height)</text>
+              <text x="20" y="175">HI</text>
+            </g>
+            <line x1="40" y1="130" x2="40" y2="208" stroke="var(--color-text-faint)"/>
+          </svg>
+          <figcaption>One sighting gives SD and Z; the instrument computes HD and VD, then the reduced level using HI and HT.</figcaption>
+        </figure>
+        <div class="callout">
+          <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19h16M4 5h16M8 5v14M16 5v14"/></svg></span>
+          <div>
+            <strong>Worked example</strong>
+            <p>Station: E 1000.000, N 2000.000, RL 300.000 m; HI = 1.500 m. To the prism: SD = 125.000 m, Z = 88&deg;30&prime;00&Prime;, bearing = 60&deg;00&prime;00&Prime;, HT = 1.800 m.<br>
+            HD = 125 &times; sin 88.5&deg; = 124.957 m; &nbsp; VD = 125 &times; cos 88.5&deg; = 3.272 m.<br>
+            RL = 300.000 + 1.500 + 3.272 &minus; 1.800 = <strong>302.972 m</strong>.<br>
+            E = 1000 + 124.957 &times; sin 60&deg; = <strong>1108.216</strong>; &nbsp; N = 2000 + 124.957 &times; cos 60&deg; = <strong>2062.479</strong>.</p>
+          </div>
+        </div>
+        <p><strong>Remote height (REM):</strong> to find the height of a point where no prism can be held (an overhead wire, the top of a building), first measure to a prism directly below it, then sight the top point. The instrument uses the same horizontal distance and the new zenith angle to compute the height above the prism.</p>
 
         <h2 id="contouring">Contouring &amp; Mapping</h2>
-        <p>By systematically observing detail points around a site — using the <strong>radial (polar) method</strong> from one or more control stations — a total station builds up a dense set of 3D coordinates. This point data is downloaded to mapping/CAD software (see CO5) where it is triangulated into a Digital Terrain Model (DTM), from which contour lines and topographic plans are generated automatically.</p>
+        <p>A <strong>contour</strong> is a line joining points of equal height; the <strong>contour interval</strong> is the height difference between two neighbouring contours. Close contours mean a steep slope; widely spaced contours mean gentle ground.</p>
+        <ul>
+          <li><strong>Radial (polar) method:</strong> from a control station, the total station picks up spot heights all around. Always include breaks of slope, ridges, valleys, drain beds and road edges, not only an even spread of points.</li>
+          <li><strong>Grid method:</strong> for flat sites, heights are taken at the corners of a square grid set out on the ground.</li>
+          <li><strong>Processing:</strong> points are downloaded to CAD/GIS software (CO5), joined into a <em>TIN</em> (triangulated irregular network) to form a Digital Terrain Model, and contours are interpolated at the chosen interval. <em>Break lines</em> stop the software from drawing contours across a drain or a road edge.</li>
+        </ul>
+        <p>The same field data gives the topographic plan, longitudinal and cross sections, and earthwork volumes.</p>
 
-        <h2 id="errors">Sources of Error</h2>
+        <h2 id="errors">Errors in Total Station Surveying</h2>
+        <p>Errors are of three kinds by nature: <strong>gross errors</strong> (blunders such as a wrong prism height or wrong point number; found by checks and removed), <strong>systematic errors</strong> (same size and sign every time, such as a wrong prism constant or collimation error; removed by calibration, correct settings and face-left/face-right), and <strong>random errors</strong> (small, unavoidable, both signs; reduced by repeated measurement and treated by statistics). By source they are:</p>
         <div class="error-grid">
           <div class="error-item"><span class="tag">Instrumental</span><p>Collimation error, vertical index error, and circle graduation errors from imperfect instrument adjustment.</p></div>
           <div class="error-item"><span class="tag">Personal</span><p>Inaccurate centring, levelling, or bisecting of the target by the surveyor.</p></div>
@@ -161,11 +233,36 @@
         </div>
         <p>Instrumental errors are largely eliminated by taking observations in both <strong>face-left and face-right</strong> and averaging the results, along with periodic calibration against manufacturer specifications.</p>
 
+        <h2 id="propagation">Error Propagation</h2>
+        <p>Every reading has a small random error. When readings are combined in a calculation, their errors combine too. This is <strong>error propagation</strong>. For independent random errors:</p>
+        <ul>
+          <li>Sum or difference of measurements: <strong>&sigma;<sub>total</sub> = &radic;(&sigma;<sub>1</sub>&sup2; + &sigma;<sub>2</sub>&sup2; + &hellip;)</strong></li>
+          <li>Sum of n measurements of equal accuracy &sigma;: <strong>&sigma;<sub>total</sub> = &sigma; &radic;n</strong></li>
+          <li>An angle error &delta; (in seconds) at distance D moves the point sideways by <strong>D &times; &delta; &divide; 206 265</strong></li>
+        </ul>
+        <p><strong>Examples:</strong></p>
+        <ul>
+          <li>A traverse has 9 angles, each measured to &plusmn;5&Prime;. Expected error of their sum = 5 &times; &radic;9 = <strong>&plusmn;15&Prime;</strong>.</li>
+          <li>An angle error of 5&Prime; at 500 m shifts the point by 500 &times; 5 &divide; 206 265 = <strong>0.012 m (12 mm)</strong> sideways. So long sights need more accurate angles.</li>
+          <li>EDM accuracy is quoted as <strong>&plusmn;(a mm + b ppm)</strong>. For &plusmn;(2 mm + 2 ppm) at 600 m: 2 + 2 &times; 0.6 = <strong>&plusmn;3.2 mm</strong>.</li>
+        </ul>
+
+        <h2 id="specification">Survey Specification</h2>
+        <p>A <strong>survey specification</strong> is the written set of rules a survey must meet, fixed before field work starts, so that the result is fit for its purpose and can be checked. It normally states:</p>
+        <ul>
+          <li>The required accuracy (class or order of survey) and the coordinate and height system to use.</li>
+          <li>The instrument class and calibration required (for example angle accuracy in seconds, EDM accuracy in mm + ppm).</li>
+          <li>The observing procedure: number of faces and rounds, maximum sight length, checks to the backsight.</li>
+          <li>Closure limits: allowed angular misclosure (often written as c&radic;n seconds for n stations) and allowed linear misclosure (written as a ratio such as 1 in N).</li>
+          <li>Point density for detail survey, contour interval, and the deliverables: coordinate list, plan, report.</li>
+        </ul>
+        <p>Error propagation is used to choose the instrument and procedure that will meet the specification before going to the field.</p>
+
         <h2 id="quiz">Quick Check</h2>
         <div class="quiz-card" data-quiz>
           <div class="quiz-head">
             <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO4</h3>
-            <span class="quiz-score" data-quiz-score>Score: 0/4</span>
+            <span class="quiz-score" data-quiz-score>Score: 0/6</span>
           </div>
           <div class="quiz-questions" data-quiz-questions></div>
           <div class="quiz-footer" data-quiz-footer hidden>
@@ -217,6 +314,28 @@
     ],
     "correct": 0,
     "explain": "The radial (polar) method systematically observes detail points around a site from control stations, building the dataset used for contouring."
+  },
+  {
+    "q": "SD = 125.000 m, zenith angle Z = 88°30′, HI = 1.500 m, HT = 1.800 m, station RL = 300.000 m. The RL of the prism point is:",
+    "options": [
+      "296.428 m",
+      "302.972 m",
+      "303.272 m",
+      "301.772 m"
+    ],
+    "correct": 1,
+    "explain": "VD = 125 × cos 88.5° = 3.272 m; RL = 300.000 + 1.500 + 3.272 − 1.800 = 302.972 m."
+  },
+  {
+    "q": "Nine angles are each measured to ±5″. The expected error of their sum is:",
+    "options": [
+      "±5″",
+      "±15″",
+      "±45″",
+      "±9″"
+    ],
+    "correct": 1,
+    "explain": "For n equal independent errors, σ_total = σ√n = 5 × √9 = ±15″."
   }
 ]
           </script>
@@ -239,10 +358,13 @@
         <ul>
           <li><a href="#introduction">Introduction</a></li>
           <li><a href="#parts">Instrument Parts</a></li>
+          <li><a href="#accessories">Accessories</a></li>
           <li><a href="#setup">Setting-Up Procedure</a></li>
-          <li><a href="#measurement">Measurement Principle</a></li>
+          <li><a href="#measurement">Distance, Angles &amp; Height</a></li>
           <li><a href="#contouring">Contouring &amp; Mapping</a></li>
-          <li><a href="#errors">Sources of Error</a></li>
+          <li><a href="#errors">Errors</a></li>
+          <li><a href="#propagation">Error Propagation</a></li>
+          <li><a href="#specification">Survey Specification</a></li>
           <li><a href="#quiz">Quick Check</a></li>
         </ul>
       </aside>

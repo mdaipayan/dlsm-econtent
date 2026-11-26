@@ -411,7 +411,7 @@ a, button, [role='button'] {
 .toc a.is-active { background: var(--color-primary-highlight); color: var(--color-primary); font-weight: 600; }
 @media (max-width: 900px) { .toc { position: static; } }
 
-.prose { max-width: 74ch; }
+.prose { max-width: 74ch; min-width: 0; }
 .prose h2 { font-size: var(--text-xl); margin-top: var(--space-16); margin-bottom: var(--space-4); scroll-margin-top: 100px; }
 .prose h2:first-child { margin-top: 0; }
 .prose h3 { font-size: var(--text-lg); margin-top: var(--space-8); margin-bottom: var(--space-3); }
@@ -455,6 +455,7 @@ table.data-table { margin: var(--space-6) 0; font-size: var(--text-sm); border: 
 table.data-table th, table.data-table td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-divider); text-align: left; }
 table.data-table th { background: var(--color-surface-offset); font-family: var(--font-display); font-weight: 600; }
 table.data-table tr:last-child td { border-bottom: none; }
+@media (max-width: 760px) { table.data-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
 
 .further-reading { margin-top: var(--space-16); border-top: 1px solid var(--color-divider); padding-top: var(--space-8); }
 .further-reading h2 { font-size: var(--text-lg); margin-bottom: var(--space-4); }

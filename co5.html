@@ -53,7 +53,7 @@
     <div class="container">
       <div class="co-hero-top">
         <span class="co-badge">CO5</span>
-        <span class="unit-tag">Unit V · Mapping &amp; Software</span>
+        <span class="unit-tag">Unit V · Mapping</span>
       </div>
       <h1>Mapping Fundamentals &amp; Software</h1>
       <div class="outcome-box">
@@ -112,6 +112,26 @@
           </svg>
           <figcaption>A map projection flattens the curved Earth onto a plane; the scale then relates a distance on that flat map back to the true ground distance.</figcaption>
         </figure>
+
+        <h3 id="coordinates">Coordinate systems used in India</h3>
+        <ul>
+          <li><strong>Geographic coordinates:</strong> latitude and longitude in degrees, with height. GPS gives them on the <strong>WGS84</strong> datum. (1&Prime; of latitude is about 31 m on the ground.)</li>
+          <li><strong>UTM (Universal Transverse Mercator):</strong> the world is divided into 60 zones, each 6&deg; of longitude wide. In each zone points have Easting and Northing in metres, with a false easting of 500 000 m at the zone's central meridian. Zone number = whole part of (longitude + 180) &divide; 6, plus 1. India lies in zones 42 to 47; Nagpur and Ramtek (about 79&deg; E) are in zone 44.</li>
+          <li><strong>Older Survey of India maps</strong> use the Everest datum with the polyconic projection. The newer Open Series Maps use WGS84 and UTM. Coordinates on the two datums differ by hundreds of metres, so always check the datum before combining old and new data.</li>
+          <li><strong>Heights</strong> on maps are reduced levels above mean sea level, carried from benchmarks; GPS heights above the ellipsoid must be converted first.</li>
+        </ul>
+
+        <h3 id="map-types">Types of maps and how height is shown</h3>
+        <table class="data-table">
+          <thead><tr><th>Map</th><th>Shows</th><th>Typical scale</th></tr></thead>
+          <tbody>
+            <tr><td>Site / engineering plan</td><td>Every detail of a project site with levels</td><td>1:200 to 1:1 000</td></tr>
+            <tr><td>Cadastral map</td><td>Property boundaries and parcel numbers</td><td>1:500 to 1:4 000</td></tr>
+            <tr><td>Topographic map</td><td>Natural and built features with contours</td><td>1:25 000 to 1:250 000 (Survey of India toposheets)</td></tr>
+            <tr><td>Thematic map</td><td>One subject: land use, soil, flood zones</td><td>Any</td></tr>
+          </tbody>
+        </table>
+        <p>Height is shown by <strong>spot heights</strong> (levels written at points), <strong>contours</strong> (lines of equal height at a fixed contour interval), and in software by a <strong>DEM/DTM</strong> (a height model), from which contours, sections, slope maps and volumes are produced.</p>
 
         <h2 id="software">Categories of Mapping Software</h2>
         <table class="data-table">
@@ -178,8 +198,26 @@
           <figcaption>Field-to-finish mapping workflow: field data → point coding → linework/DTM → map layout → export.</figcaption>
         </figure>
 
-        <h2 id="detailing">Detailing Process</h2>
-        <p>"Detailing" refers to attaching descriptive attribute data to each mapped feature — for example, a manhole point might carry attributes for depth, material and condition, while a building polygon might carry attributes for use, floors and ownership. In a GIS, these attributes make the map queryable (e.g. "show all manholes deeper than 2 m"), turning a simple drawing into a spatial database. Quality checks — comparing feature counts, verifying topology (no gaps/overlaps), and validating attribute completeness — are the final step before cartographic finishing and delivery.</p>
+        <h2 id="control">Establishment of Control Points for Mapping</h2>
+        <p>A digital map is only as accurate as the control it hangs on. Before detail survey starts:</p>
+        <ol>
+          <li><strong>Plan the control</strong> so that every part of the area can be reached from at least one control point, with a second point visible for orientation and checks.</li>
+          <li><strong>Connect to known control:</strong> start from a Survey of India benchmark or GNSS control, or use CORS, so the map is on the national coordinate and height system.</li>
+          <li><strong>Fix the points</strong> by GNSS static or RTK survey, or by a closed total-station traverse; adjust the closing error.</li>
+          <li><strong>Mark and describe</strong> each point (pillar or nail, number, description card) so it can be used again for setting out.</li>
+          <li><strong>For drone mapping</strong>, lay out <strong>ground control points (GCPs)</strong>: painted targets spread over the area, including its edges, and fixed by RTK. Keep a few as check points that are not used in processing, to test the final map.</li>
+        </ol>
+
+        <h2 id="detailing">Detailing of Digital Land Surveying</h2>
+        <p><strong>Detailing</strong> is the field work of picking up every feature to be shown on the map, measured from the control points, and then building those features in software.</p>
+        <ul>
+          <li><strong>Field pick-up:</strong> from a control station, the total station (radial method) or an RTK rover records each detail point: building corners, road and kerb edges, boundary walls, poles, trees, manholes, drains, and spot heights.</li>
+          <li><strong>Feature codes:</strong> every point gets a code (for example BLD, RD, TREE, MH); line codes tell the software which points to join and in what order.</li>
+          <li><strong>Field sketch:</strong> a rough sketch with point numbers helps to sort out any coding mistake in the office.</li>
+          <li><strong>Check shots:</strong> re-measure a known point at the start and end of every set-up to prove that nothing moved.</li>
+          <li><strong>In the office:</strong> codes build the lines, symbols and layers automatically; then <em>attributes</em> are added (a manhole's depth and material, a building's use and floors), which make the map queryable in a GIS, for example "show all manholes deeper than 2 m".</li>
+          <li><strong>Final checks:</strong> missing features, closed building outlines, no gaps or overlaps between parcels (topology), complete attributes, and a comparison with the field sketch.</li>
+        </ul>
 
         <h2 id="choosing">Choosing the Right Tool</h2>
         <p>The choice between CAD and GIS software depends on the end use: engineering design and construction layout favour CAD's precision drafting tools, while asset management, spatial analysis and thematic mapping favour GIS's database and analysis capability. Many professional workflows use both together — CAD for the initial engineering plan, GIS for long-term data management.</p>
@@ -188,7 +226,7 @@
         <div class="quiz-card" data-quiz>
           <div class="quiz-head">
             <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO5</h3>
-            <span class="quiz-score" data-quiz-score>Score: 0/4</span>
+            <span class="quiz-score" data-quiz-score>Score: 0/6</span>
           </div>
           <div class="quiz-questions" data-quiz-questions></div>
           <div class="quiz-footer" data-quiz-footer hidden>
@@ -231,15 +269,37 @@
     "explain": "Elevation points are triangulated into a TIN, from which contour lines are interpolated at a chosen interval."
   },
   {
-    "q": "\"Detailing\" in a GIS mainly refers to:",
+    "q": "A place at longitude 79.3° E lies in which UTM zone?",
     "options": [
-      "Increasing the map's colour saturation",
-      "Attaching descriptive attribute data to mapped features",
-      "Adding a north arrow",
-      "Converting vector data to raster"
+      "Zone 42",
+      "Zone 43",
+      "Zone 44",
+      "Zone 47"
+    ],
+    "correct": 2,
+    "explain": "(79.3 + 180) ÷ 6 = 43.2; whole part 43, plus 1 = zone 44, which covers 78° E to 84° E."
+  },
+  {
+    "q": "In digital land surveying, \"detailing\" mainly means:",
+    "options": [
+      "Picking up map features in the field from control points, then building them in software",
+      "Choosing the colour scheme of the map",
+      "Printing the final map sheet",
+      "Buying a more detailed instrument"
+    ],
+    "correct": 0,
+    "explain": "Detailing is the field pick-up of all features (with codes and check shots) from the control framework, followed by building lines, symbols and attributes in software."
+  },
+  {
+    "q": "Why are some ground control points kept as check points in drone mapping?",
+    "options": [
+      "To save paint",
+      "To test the accuracy of the final map with points not used in processing",
+      "Because the drone cannot see them",
+      "To set the contour interval"
     ],
     "correct": 1,
-    "explain": "Detailing attaches attribute data (e.g. depth, material, ownership) to features, turning a drawing into a queryable spatial database."
+    "explain": "Check points are independent of the processing, so comparing their surveyed and mapped positions gives an honest measure of map accuracy."
   }
 ]
           </script>
@@ -262,9 +322,12 @@
         <ul>
           <li><a href="#introduction">Introduction</a></li>
           <li><a href="#fundamentals">Mapping Fundamentals</a></li>
+          <li><a href="#coordinates">Coordinate Systems</a></li>
+          <li><a href="#map-types">Map Types &amp; Heights</a></li>
           <li><a href="#software">Categories of Software</a></li>
           <li><a href="#working-steps">Working Steps</a></li>
-          <li><a href="#detailing">Detailing Process</a></li>
+          <li><a href="#control">Control Points for Mapping</a></li>
+          <li><a href="#detailing">Detailing</a></li>
           <li><a href="#choosing">Choosing the Right Tool</a></li>
           <li><a href="#quiz">Quick Check</a></li>
         </ul>

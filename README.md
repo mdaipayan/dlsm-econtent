@@ -7,11 +7,11 @@ A static, multi-page website presenting Course Outcome (CO)-wise e-content for *
 | Page | Covers |
 |---|---|
 | `index.html` | Course overview, CO grid, quick links |
-| `co1.html` | CO1 — Fundamentals of Digital Land Surveying |
-| `co2.html` | CO2 — GPS: segments, signals, receivers, error sources |
-| `co3.html` | CO3 — DGPS: differential correction, base/rover working |
-| `co4.html` | CO4 — Total Station: parts, setup, measurement, errors |
-| `co5.html` | CO5 — Mapping fundamentals & automated mapping software |
+| `co1.html` | CO1 — Introduction: need, principles, types, digital survey, control points, advanced methods |
+| `co2.html` | CO2 — GPS: segments, signals, receivers, software, data collection/processing, plotting, errors |
+| `co3.html` | CO3 — DGPS: correction principle, data processing, control station, GPS loop closure, CORS/RTK |
+| `co4.html` | CO4 — Total Station: parts, accessories, setup, distance/angle/height, contouring, errors, error propagation, specification |
+| `co5.html` | CO5 — Mapping: fundamentals, WGS84/UTM, software, automated mapping, control points, detailing |
 | `references.html` | Prescribed text books + CO-wise additional reference books |
 
 Assets live in `css/style.css` and `js/script.js`. The site is plain HTML/CSS/JS — no build step, no dependencies.

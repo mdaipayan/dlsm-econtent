@@ -53,7 +53,7 @@
     <div class="container">
       <div class="co-hero-top">
         <span class="co-badge">CO3</span>
-        <span class="unit-tag">Unit III · Differential GPS</span>
+        <span class="unit-tag">Unit III · DGPS and Data Processing</span>
       </div>
       <h1>Differential GPS (DGPS)</h1>
       <div class="outcome-box">
@@ -121,32 +121,71 @@
           <li>Log data continuously for the duration of the rover's survey session so corrections are available throughout.</li>
         </ol>
 
-        <h2 id="loop-closure">Loop Closure</h2>
-        <p>To verify the accuracy of a control traverse, surveyors use the <strong>loop closure</strong> technique: the traverse starts and ends at the same known control point (or two known points). Since the true coordinates of the start/end point are known, any difference between the computed and known values — the <strong>misclosure error</strong> — reveals the accumulated error in the survey. This misclosure is then distributed proportionally across all traverse stations (e.g. by the Bowditch/compass rule) to produce adjusted, self-consistent coordinates.</p>
+        <h2 id="processing">DGPS Data Application &amp; Processing</h2>
+        <p>In post-processed DGPS (and in every control survey) the raw data from all receivers is brought to the office and processed in this order:</p>
+        <ol>
+          <li><strong>Import and check:</strong> load raw or RINEX files from every receiver; check station names, antenna types and antenna heights against the field book. A wrong antenna height is the most common blunder.</li>
+          <li><strong>Get reference data:</strong> add the known control coordinates, and if needed the data of the nearest CORS station and precise satellite orbits.</li>
+          <li><strong>Baseline processing:</strong> for every pair of receivers that observed together, the software computes the <em>baseline</em>: the 3D vector (&Delta;X, &Delta;Y, &Delta;Z) between them. It uses the difference between the two receivers' data (differencing), which cancels clock, orbit and most atmospheric errors.</li>
+          <li><strong>Check each baseline:</strong> a carrier-phase solution should be <em>fixed</em> (the whole number of wavelengths found), not <em>float</em>. Float or poor baselines are removed or re-observed.</li>
+          <li><strong>Loop closure check:</strong> test closed loops of baselines (next section).</li>
+          <li><strong>Network adjustment:</strong> hold the known control points fixed and adjust all baselines together by least squares, giving final coordinates with their accuracy.</li>
+          <li><strong>Transform and report:</strong> convert to the project coordinate system (for example UTM zone 44N) and heights above mean sea level; prepare the report and export to CAD/GIS.</li>
+        </ol>
+        <p><strong>Applications of DGPS data:</strong> establishing and densifying control networks, ground control points for drone mapping, topographic and cadastral surveys, road and canal alignment, setting out with RTK, hydrographic survey and dredging, precision agriculture and machine guidance, and monitoring of structures and land movement.</p>
+
+        <h2 id="loop-closure">Loop Closure Technique</h2>
+        <p>In a GPS control survey, baselines form closed loops (triangles or polygons) between stations. Because a loop starts and ends at the same point, the baseline vectors around it must add up to zero:</p>
+        <p style="text-align:center;"><strong>&Sigma;&Delta;X = 0, &nbsp; &Sigma;&Delta;Y = 0, &nbsp; &Sigma;&Delta;Z = 0</strong></p>
+        <p>In practice the sums are small but not zero. This is the <strong>loop misclosure</strong>:</p>
+        <p style="text-align:center;">Misclosure = &radic;(&Sigma;&Delta;X&sup2; + &Sigma;&Delta;Y&sup2; + &Sigma;&Delta;Z&sup2;), &nbsp; and &nbsp; misclosure in ppm = (misclosure &divide; loop length) &times; 10<sup>6</sup></p>
+        <p>If the misclosure is within the limit set by the survey specification, the baselines are accepted and adjusted. If not, the bad baseline is found (it shows up in every loop it belongs to) and is re-processed or re-observed. Loops are built from baselines of <em>different</em> sessions; a loop made from one session only always closes and proves nothing.</p>
 
         <figure class="diagram-card">
-          <svg viewBox="0 0 600 220" role="img" aria-label="Diagram of a closed traverse loop returning to its start point, with a small misclosure error vector shown at the closing point">
-            <polygon points="300,30 480,110 420,190 180,190 120,110" fill="none" stroke="var(--color-primary)" stroke-width="1.6"/>
-            <g fill="var(--color-primary)">
-              <circle cx="300" cy="30" r="5"/>
-              <circle cx="480" cy="110" r="5"/>
-              <circle cx="420" cy="190" r="5"/>
-              <circle cx="180" cy="190" r="5"/>
-              <circle cx="120" cy="110" r="5"/>
+          <svg viewBox="0 0 600 240" role="img" aria-label="Triangle of three GPS stations A, B and C joined by baseline vectors AB, BC and CA forming a closed loop">
+            <defs>
+              <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--color-primary)"/></marker>
+            </defs>
+            <g stroke="var(--color-primary)" stroke-width="1.8" fill="none" marker-end="url(#arr3)">
+              <path d="M130 190 L292 48"/>
+              <path d="M312 48 L470 186"/>
+              <path d="M462 200 L142 200"/>
             </g>
-            <g font-size="9" fill="var(--color-text-muted)" text-anchor="middle">
-              <text x="300" y="18">Known Control Point</text>
-              <text x="500" y="105">St.2</text>
-              <text x="430" y="208">St.3</text>
-              <text x="170" y="208">St.4</text>
-              <text x="100" y="105">St.5</text>
+            <rect x="118" y="188" width="24" height="24" fill="var(--color-amber)" transform="rotate(45 130 200)"/>
+            <g fill="var(--color-primary)"><circle cx="300" cy="40" r="7"/><circle cx="470" cy="200" r="7"/></g>
+            <g font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="middle">
+              <text x="100" y="230">A (known control)</text>
+              <text x="300" y="24">B</text>
+              <text x="500" y="230">C</text>
             </g>
-            <circle cx="306" cy="36" r="4" fill="var(--color-amber)"/>
-            <line x1="300" y1="30" x2="306" y2="36" stroke="var(--color-amber)" stroke-width="2"/>
-            <text x="340" y="55" font-size="10" fill="var(--color-amber)" font-weight="700">misclosure error</text>
+            <g font-size="11" fill="var(--color-text-muted)" text-anchor="middle">
+              <text x="185" y="112">baseline AB</text>
+              <text x="420" y="112">baseline BC</text>
+              <text x="300" y="222">baseline CA</text>
+            </g>
           </svg>
-          <figcaption>A closed traverse returns to its known starting point; the small gap between the computed and true closing position is the misclosure, distributed across all stations during adjustment.</figcaption>
+          <figcaption>Three baselines from different sessions form a loop A&rarr;B&rarr;C&rarr;A. Their vectors should add up to zero; what is left over is the loop misclosure.</figcaption>
         </figure>
+
+        <h3>Worked example</h3>
+        <table class="data-table">
+          <thead><tr><th>Baseline</th><th>&Delta;X (m)</th><th>&Delta;Y (m)</th><th>&Delta;Z (m)</th><th>Length (m)</th></tr></thead>
+          <tbody>
+            <tr><td>A&rarr;B</td><td>1520.432</td><td>&minus;830.215</td><td>410.118</td><td>1780.215</td></tr>
+            <tr><td>B&rarr;C</td><td>&minus;610.287</td><td>1240.556</td><td>&minus;205.334</td><td>1397.709</td></tr>
+            <tr><td>C&rarr;A</td><td>&minus;910.131</td><td>&minus;410.352</td><td>&minus;204.776</td><td>1019.147</td></tr>
+            <tr><td><strong>Sum</strong></td><td><strong>0.014</strong></td><td><strong>&minus;0.011</strong></td><td><strong>0.008</strong></td><td><strong>4197.071</strong></td></tr>
+          </tbody>
+        </table>
+        <p>Misclosure = &radic;(0.014&sup2; + 0.011&sup2; + 0.008&sup2;) = 0.0195 m &asymp; 19.5 mm. Relative misclosure = 0.0195 &divide; 4197.071 &times; 10<sup>6</sup> &asymp; <strong>4.6 ppm</strong> (about 1 in 215 000). Compare this with the limit in the project specification; if it is within the limit, the loop is accepted.</p>
+        <p><em>Note:</em> the same idea is used in a closed total-station traverse (CO4): the traverse returns to a known point, and the closing error is distributed, for example by the Bowditch rule. In GPS the check is done on 3D baseline vectors instead of angles and distances.</p>
+
+        <h2 id="cors">DGPS Today: CORS and RTK</h2>
+        <ul>
+          <li><strong>DGPS vs RTK:</strong> classic DGPS corrects <em>code</em> measurements and gives sub-metre to metre accuracy. RTK uses <em>carrier-phase</em> corrections and gives 1&ndash;3 cm in real time. Both use the same base-and-rover idea.</li>
+          <li><strong>CORS:</strong> a Continuously Operating Reference Station is a permanent base station that records all the time. With a CORS network the surveyor needs only a rover. Survey of India's CORS network gives real-time RTK positioning with an accuracy of about &plusmn;3 cm; the Surveyor General reported 1,145 stations in February 2026.</li>
+          <li><strong>Network RTK:</strong> the corrections of several CORS stations are combined, so accuracy stays good even far from any single station.</li>
+        </ul>
 
         <h2 id="advantages">Advantages Over Standalone GPS</h2>
         <table class="data-table">
@@ -170,7 +209,7 @@
         <div class="quiz-card" data-quiz>
           <div class="quiz-head">
             <h3><svg class="quiz-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quick Check — CO3</h3>
-            <span class="quiz-score" data-quiz-score>Score: 0/4</span>
+            <span class="quiz-score" data-quiz-score>Score: 0/6</span>
           </div>
           <div class="quiz-questions" data-quiz-questions></div>
           <div class="quiz-footer" data-quiz-footer hidden>
@@ -191,15 +230,15 @@
     "explain": "The base station sits on a point with known coordinates, compares that to its GPS-derived position, and transmits the resulting correction to the rover."
   },
   {
-    "q": "What does the \"loop closure\" technique verify in a traverse survey?",
+    "q": "What does the \"loop closure\" technique verify in a GPS control survey?",
     "options": [
       "The colour of the survey markers",
       "The battery level of the receiver",
-      "The accumulated error, by returning to a known point",
+      "That baseline vectors around a closed loop add up to (nearly) zero",
       "The number of satellites visible"
     ],
     "correct": 2,
-    "explain": "A traverse that starts and ends at a known point reveals its accumulated misclosure error when the computed and known closing positions are compared."
+    "explain": "Baselines around a closed loop must sum to zero in ΔX, ΔY and ΔZ; the small remainder (the misclosure) shows whether the baselines are good enough to adjust."
   },
   {
     "q": "Real-time DGPS differs from post-processed DGPS mainly in that:",
@@ -222,6 +261,28 @@
     ],
     "correct": 1,
     "explain": "The Bowditch (compass) rule proportionally distributes the misclosure error across all stations in the traverse."
+  },
+  {
+    "q": "A carrier-phase baseline solution should normally be:",
+    "options": [
+      "Float",
+      "Fixed",
+      "Deleted",
+      "Single-epoch only"
+    ],
+    "correct": 1,
+    "explain": "A fixed solution has found the whole number of carrier wavelengths and is accurate to centimetres or better; float solutions are weaker and are checked or re-observed."
+  },
+  {
+    "q": "A GPS loop of total length 4197 m has a 3D misclosure of 19.5 mm. The relative misclosure is about:",
+    "options": [
+      "0.46 ppm",
+      "4.6 ppm",
+      "46 ppm",
+      "460 ppm"
+    ],
+    "correct": 1,
+    "explain": "0.0195 ÷ 4197 × 10^6 ≈ 4.6 ppm, i.e. about 1 in 215 000."
   }
 ]
           </script>
@@ -232,6 +293,8 @@
           <ul>
             <li><a href="https://en.wikipedia.org/wiki/Differential_GPS" target="_blank" rel="noopener">Differential GNSS — principle and applications</a> <span class="src">en.wikipedia.org</span></li>
             <li><a href="https://archive.nptel.ac.in/courses/105/107/105107158/" target="_blank" rel="noopener">NPTEL: Digital Land Surveying and Mapping — DGPS module</a> <span class="src">archive.nptel.ac.in</span></li>
+            <li><a href="https://surveyofindia.gov.in/webroot/UserFiles/files/Note%20on%20RTK%20and%20CORS.pdf" target="_blank" rel="noopener">Survey of India: Note on RTK and CORS</a> <span class="src">surveyofindia.gov.in</span></li>
+            <li><a href="https://ggim.un.org/meetings/2026/Vienna/documents/IND_IGIF.pdf" target="_blank" rel="noopener">Surveyor General of India, UN-GGIM presentation (Feb 2026)</a> <span class="src">ggim.un.org</span></li>
             <li><a href="slow-learner.html#co3">Need a simpler recap?</a> <span class="src">Slow Learner e-content</span></li>
             <li><a href="advanced-learner.html#co3">Want an extension challenge?</a> <span class="src">Advanced Learner e-content</span></li>
           </ul>
@@ -246,7 +309,9 @@
           <li><a href="#principle">Differential Correction Principle</a></li>
           <li><a href="#working">DGPS Working</a></li>
           <li><a href="#control-station">Control Station Set-up</a></li>
+          <li><a href="#processing">Data Processing</a></li>
           <li><a href="#loop-closure">Loop Closure</a></li>
+          <li><a href="#cors">CORS and RTK</a></li>
           <li><a href="#advantages">Advantages Over GPS</a></li>
           <li><a href="#quiz">Quick Check</a></li>
         </ul>
