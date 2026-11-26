@@ -175,6 +175,11 @@
           </svg>
           <figcaption>Trilateration: each satellite defines a sphere of possible positions at its measured distance; three (plus a fourth for clock error) intersect at a single point — the receiver's location.</figcaption>
         </figure>
+        <figure class="diagram-card ia" data-ia="dop">
+          <span class="ia-badge">Try it</span>
+          <div class="ia-mount"></div>
+          <figcaption>Satellite geometry. Each band is a measured distance with a small range error. When the satellites are spread across the sky the bands cross sharply and the possible area (orange) is small. When they are bunched together the area stretches and the DOP rises, even though each range error is the same.</figcaption>
+        </figure>
 
         <h2 id="collection">GPS Data Collection &amp; Processing</h2>
         <h3>Survey methods (how data is collected)</h3>
@@ -227,6 +232,11 @@
           <div class="error-item"><span class="tag">Set-up errors</span><p>Wrong centring, a mistake in the measured antenna height, or obstructions near the antenna; these are human errors that no processing can remove.</p></div>
         </div>
 
+        <figure class="diagram-card ia" data-ia="multipath">
+          <span class="ia-badge">Try it</span>
+          <div class="ia-mount"></div>
+          <figcaption>Multipath. Part of the signal reaches the antenna after bouncing off a wall, travelling an extra 2 d cos(elevation). The receiver mixes the two signals and its positions scatter. Keep antennas away from walls, vehicles and water, and use a mask angle for low satellites.</figcaption>
+        </figure>
         <div class="callout">
           <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></span>
           <div>
@@ -368,5 +378,6 @@
 
 <script src="js/script.js"></script>
 <script src="js/quiz.js"></script>
+<script src="js/interactives.js"></script>
 </body>
 </html>

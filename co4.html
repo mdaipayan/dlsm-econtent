@@ -213,6 +213,11 @@
             E = 1000 + 124.957 &times; sin 60&deg; = <strong>1108.216</strong>; &nbsp; N = 2000 + 124.957 &times; cos 60&deg; = <strong>2062.479</strong>.</p>
           </div>
         </div>
+        <figure class="diagram-card ia" data-ia="ts-explorer">
+          <span class="ia-badge">Try it</span>
+          <div class="ia-mount"></div>
+          <figcaption>Height explorer. Change the readings and see HD, VD and the reduced level update (station RL 300.000 m). Tick the prism-constant box: every distance becomes 30 mm too long, and the result still looks believable — which is why settings must be checked.</figcaption>
+        </figure>
         <p><strong>Remote height (REM):</strong> to find the height of a point where no prism can be held (an overhead wire, the top of a building), first measure to a prism directly below it, then sight the top point. The instrument uses the same horizontal distance and the new zenith angle to compute the height above the prism.</p>
 
         <h2 id="contouring">Contouring &amp; Mapping</h2>
@@ -232,6 +237,11 @@
           <div class="error-item"><span class="tag">Natural</span><p>Atmospheric refraction, temperature and pressure variation affecting the EDM signal path.</p></div>
         </div>
         <p>Instrumental errors are largely eliminated by taking observations in both <strong>face-left and face-right</strong> and averaging the results, along with periodic calibration against manufacturer specifications.</p>
+        <figure class="diagram-card ia" data-ia="face-lr">
+          <span class="ia-badge">Try it</span>
+          <div class="ia-mount"></div>
+          <figcaption>Face left and face right. A collimation error adds to the face-left reading and subtracts from the face-right reading, so the mean of the two is free of it.</figcaption>
+        </figure>
 
         <h2 id="propagation">Error Propagation</h2>
         <p>Every reading has a small random error. When readings are combined in a calculation, their errors combine too. This is <strong>error propagation</strong>. For independent random errors:</p>
@@ -392,5 +402,6 @@
 
 <script src="js/script.js"></script>
 <script src="js/quiz.js"></script>
+<script src="js/interactives.js"></script>
 </body>
 </html>

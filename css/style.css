@@ -560,3 +560,32 @@ table.data-table tr:last-child td { border-bottom: none; }
   padding: var(--space-3) var(--space-5); border-radius: var(--radius-md);
 }
 .skip-link:focus { left: var(--space-4); top: var(--space-4); }
+
+/* ===== Interactive concept visuals ===== */
+.ia svg { width: 100%; height: auto; display: block; overflow: hidden; }
+.ia-badge { display: inline-block; font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.04em; color: var(--color-primary); background: var(--color-primary-highlight); border-radius: var(--radius-full); padding: 2px 10px; margin-bottom: var(--space-3); }
+.ia-controls { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); align-items: center; margin-top: var(--space-4); font-size: var(--text-sm); }
+.ia-controls label { display: flex; align-items: center; gap: var(--space-2); color: var(--color-text-muted); }
+.ia-controls input[type=range] { width: 150px; accent-color: var(--color-primary); }
+.ia-controls input[type=checkbox] { accent-color: var(--color-primary); width: 16px; height: 16px; }
+.ia-controls output { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text); min-width: 7.5em; }
+.ia-num { width: 7em; padding: 4px 8px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-bg); color: var(--color-text); font: inherit; }
+.ia-btn { font: inherit; font-size: var(--text-sm); padding: 6px 14px; border-radius: var(--radius-full); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); cursor: pointer; }
+.ia-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.ia-btn.on { background: var(--color-primary-highlight); border-color: var(--color-primary); color: var(--color-primary); }
+.ia-btn:focus-visible, .ia [tabindex]:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.ia-readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-3); margin-top: var(--space-4); }
+.ia-readout div { background: var(--color-surface-offset); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); }
+.ia-readout span { display: block; font-size: var(--text-xs); color: var(--color-text-muted); }
+.ia-readout b { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-text); }
+.ia-status { font-size: var(--text-sm); color: var(--color-text); margin-top: var(--space-3); min-height: 3em; }
+.ia-hint { font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-2); }
+.ia-err { font-size: var(--text-xs); color: var(--color-danger); }
+.ia:not(.ia-ready) .ia-mount::before { content: "Interactive diagram: needs JavaScript."; font-size: var(--text-xs); color: var(--color-text-faint); }
+@media print { .ia-controls, .ia-hint { display: none; } }
+@media (max-width: 600px) {
+  .ia .ia-mount { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .ia .ia-mount > svg { min-width: 520px; }
+  .ia-controls label > span { white-space: nowrap; }
+  .ia-controls label { flex-wrap: wrap; }
+}

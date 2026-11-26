@@ -121,6 +121,11 @@
           <li><strong>Heights</strong> on maps are reduced levels above mean sea level, carried from benchmarks; GPS heights above the ellipsoid must be converted first.</li>
         </ul>
 
+        <figure class="diagram-card ia" data-ia="utm">
+          <span class="ia-badge">Try it</span>
+          <div class="ia-mount"></div>
+          <figcaption>UTM zones across India (zones 42 to 47, each 6° wide). Click a city or enter a point to see its zone, Easting and Northing on WGS84. Cities are plotted by latitude and longitude only; no boundary is drawn.</figcaption>
+        </figure>
         <h3 id="map-types">Types of maps and how height is shown</h3>
         <table class="data-table">
           <thead><tr><th>Map</th><th>Shows</th><th>Typical scale</th></tr></thead>
@@ -196,6 +201,11 @@
             </defs>
           </svg>
           <figcaption>Field-to-finish mapping workflow: field data → point coding → linework/DTM → map layout → export.</figcaption>
+        </figure>
+        <figure class="diagram-card ia" data-ia="tin">
+          <span class="ia-badge">Try it</span>
+          <div class="ia-mount"></div>
+          <figcaption>From spot heights to contours. Step 1 plots the surveyed spot heights, step 2 joins them into a triangulated irregular network (TIN), and step 3 interpolates contours along the triangle edges. Change the contour interval to see more or fewer lines; every fifth line is drawn thicker (index contour).</figcaption>
         </figure>
 
         <h2 id="control">Establishment of Control Points for Mapping</h2>
@@ -356,5 +366,6 @@
 
 <script src="js/script.js"></script>
 <script src="js/quiz.js"></script>
+<script src="js/interactives.js"></script>
 </body>
 </html>

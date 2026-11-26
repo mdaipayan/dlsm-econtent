@@ -105,6 +105,11 @@
           </svg>
           <figcaption>The base station (known position) computes and broadcasts a correction that the rover applies to its own fix.</figcaption>
         </figure>
+        <figure class="diagram-card ia" data-ia="base-rover">
+          <span class="ia-badge">Try it</span>
+          <div class="ia-mount"></div>
+          <figcaption>DGPS step by step. Base and rover see nearly the same error. The base knows its true position, so it can work out the correction and send it; the rover applies it. Error values are examples.</figcaption>
+        </figure>
 
         <h2 id="working">DGPS Working — Real-Time vs Post-Processed</h2>
         <ul>
@@ -178,6 +183,11 @@
           </tbody>
         </table>
         <p>Misclosure = &radic;(0.014&sup2; + 0.011&sup2; + 0.008&sup2;) = 0.0195 m &asymp; 19.5 mm. Relative misclosure = 0.0195 &divide; 4197.071 &times; 10<sup>6</sup> &asymp; <strong>4.6 ppm</strong> (about 1 in 215 000). Compare this with the limit in the project specification; if it is within the limit, the loop is accepted.</p>
+        <figure class="diagram-card ia" data-ia="loop">
+          <span class="ia-badge">Try it</span>
+          <div class="ia-mount"></div>
+          <figcaption>GPS loop closure with the worked example above. Add an extra error to baseline BC and watch the gap at A, the misclosure in ppm and the decision change. The limit shown is an example; use the one in your project specification.</figcaption>
+        </figure>
         <p><em>Note:</em> the same idea is used in a closed total-station traverse (CO4): the traverse returns to a known point, and the closing error is distributed, for example by the Bowditch rule. In GPS the check is done on 3D baseline vectors instead of angles and distances.</p>
 
         <h2 id="cors">DGPS Today: CORS and RTK</h2>
@@ -340,5 +350,6 @@
 
 <script src="js/script.js"></script>
 <script src="js/quiz.js"></script>
+<script src="js/interactives.js"></script>
 </body>
 </html>
