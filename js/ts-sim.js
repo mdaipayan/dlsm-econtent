@@ -119,12 +119,10 @@
   // ---------- state ----------
   var site = null, st = null;
   function fresh(roll, name) {
-    var r = mulberry(hashStr('setup|' + roll + '|' + Date.now()));
-    var ca = r() * 360, cm = 60 + r() * 60, ta = r() * 360, tm = 420 + r() * 480;
     return {
       roll: roll, name: name || '', stage: 1, done: { 1: false, 2: false, 3: false, 4: false },
-      setup: { c: [cm * Math.sin(ca * D2R), cm * Math.cos(ca * D2R)], t: [tm * Math.sin(ta * D2R), tm * Math.cos(ta * D2R)], moves: 0 },
-      hiTyped: '', ht: 1.8, oriented: false, off: 100 + r() * 200, h: r() * 360, z: 90,
+      setup: newSetup(), coach: true,
+      hiTyped: '', ht: 1.8, oriented: false, off: 100 + noiseR() * 200, h: noiseR() * 360, z: 90,
       bsCheck: null, last: null, detail: [], nextPt: 101,
       stake: { sel: 'D1', prism: {}, last: null, pegs: {} }, started: new Date().toISOString()
     };
@@ -216,6 +214,13 @@
 
   // ---------- stage 1: centring and levelling ----------
   var U = { A: [Math.cos(210 * D2R), Math.sin(210 * D2R)], B: [Math.cos(330 * D2R), Math.sin(330 * D2R)], C: [0, 1] };
+  var STEP = { tri: 50, leg: 5, scr: 60, sld: 1 };
+  var DIR8 = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+  function compass(dx, dy) { return DIR8[Math.round(w360(Math.atan2(dx, dy) / D2R) / 45) % 8]; }
+  function newSetup() {
+    var ca = noiseR() * 360, cm = 30 + noiseR() * 40, ta = noiseR() * 360, tm = 240 + noiseR() * 300;
+    return { c: [cm * Math.sin(ca * D2R), cm * Math.cos(ca * D2R)], t: [tm * Math.sin(ta * D2R), tm * Math.cos(ta * D2R)], moves: 0 };
+  }
   function stage1() {
     var views = H('div', { class: 'tsim-views two' }, el.body);
     var v1 = H('div', { class: 'tsim-pane' }, views); H('p', { class: 'tsim-lbl', text: 'Optical plummet view (looking down at the station mark)' }, v1);
@@ -226,44 +231,63 @@
 
     var side = H('div', { class: 'tsim-side' }, el.body);
     H('ol', { class: 'tsim-proc', html:
-      '<li><b>Rough centring:</b> move the tripod until the mark is near the centre of the plummet circle.</li>' +
-      '<li><b>Rough levelling:</b> lengthen or shorten the tripod legs to bring the circular bubble near the ring.</li>' +
-      '<li><b>Fine levelling:</b> use the three foot screws. The bubble moves towards the screw you raise (left-thumb rule).</li>' +
-      '<li><b>Fine centring:</b> slide the instrument on the tripod head. Levelling disturbs centring a little, so repeat 3 and 4 until both are within limits: centring ≤ 1 mm, tilt ≤ 30″.</li>' }, side);
-    function group(title) { var g = H('div', { class: 'tsim-grp' }, side); H('span', { class: 'tsim-gt', text: title }, g); return H('div', { class: 'tsim-row' }, g); }
-    var g1 = group('Move tripod (10 mm)');
-    [['N ▲', 0, 10], ['S ▼', 0, -10], ['W ◀', -10, 0], ['E ▶', 10, 0]].forEach(function (m) {
-      btn(g1, m[0], function () { act(function () { st.setup.c[0] += m[1]; st.setup.c[1] += m[2]; st.setup.t[0] += gauss() * 40; st.setup.t[1] += gauss() * 40; }); }, '', 'Move tripod ' + m[0]);
+      '<li><b>Rough centring:</b> move the tripod towards the mark until it is inside the plummet circle.</li>' +
+      '<li><b>Rough levelling:</b> lengthen or shorten the tripod legs. The bubble moves towards a leg you lengthen.</li>' +
+      '<li><b>Fine levelling:</b> use the foot screws. The bubble moves towards a screw you raise (left-thumb rule).</li>' +
+      '<li><b>Fine centring:</b> slide the instrument on the tripod head. Levelling disturbs centring a little, so repeat 3 and 4 until centring ≤ 1 mm and tilt ≤ 30″.</li>' }, side);
+    el.coach = H('p', { class: 'tsim-coach', 'aria-live': 'polite' }, side);
+    var cl = H('label', { class: 'tsim-check' }, side);
+    var cb = H('input', { type: 'checkbox' }, cl); cb.checked = st.coach !== false;
+    H('span', { text: 'Show coach hints' }, cl);
+    cb.addEventListener('change', function () { st.coach = cb.checked; save(); draw1(); });
+    function group(title, key, steps) {
+      var g = H('div', { class: 'tsim-grp' }, side), hd = H('div', { class: 'tsim-gh' }, g);
+      H('span', { class: 'tsim-gt', text: title }, hd);
+      var sw = H('span', { class: 'tsim-stepsel', role: 'group', 'aria-label': title + ' step' }, hd);
+      steps.forEach(function (s) {
+        var b = H('button', { type: 'button', text: s[0] }, sw);
+        if (STEP[key] === s[1]) b.classList.add('on');
+        b.addEventListener('click', function () { STEP[key] = s[1]; Array.prototype.forEach.call(sw.children, function (x) { x.classList.remove('on'); }); b.classList.add('on'); draw1(); });
+      });
+      return H('div', { class: 'tsim-row' }, g);
+    }
+    var g1 = group('Move tripod', 'tri', [['50 mm', 50], ['10 mm', 10]]);
+    [['N ▲', 0, 1], ['S ▼', 0, -1], ['W ◀', -1, 0], ['E ▶', 1, 0]].forEach(function (m) {
+      btn(g1, m[0], function () { act(function () { st.setup.c[0] += m[1] * STEP.tri; st.setup.c[1] += m[2] * STEP.tri; st.setup.t[0] += gauss() * 20; st.setup.t[1] += gauss() * 20; }); }, '', 'Move tripod ' + m[0]);
     });
-    var g2 = group('Tripod legs (about 2′ each)');
+    var g2 = group('Tripod legs', 'leg', [['5′', 5], ['1′', 1]]);
     ['A', 'B', 'C'].forEach(function (k) {
       btn(g2, k + ' longer', function () { leg(k, 1); });
       btn(g2, k + ' shorter', function () { leg(k, -1); });
     });
-    var g3 = group('Foot screws (10″ each)');
+    var g3 = group('Foot screws', 'scr', [['1′', 60], ['10″', 10]]);
     ['A', 'B', 'C'].forEach(function (k) {
       btn(g3, k + ' ▲', function () { screw(k, 1); }, '', 'Raise foot screw ' + k);
       btn(g3, k + ' ▼', function () { screw(k, -1); }, '', 'Lower foot screw ' + k);
     });
-    var g4 = group('Slide on tripod head');
-    [['N 1 mm', 0, 1], ['S 1 mm', 0, -1], ['W 1 mm', -1, 0], ['E 1 mm', 1, 0], ['N 0.2', 0, 0.2], ['S 0.2', 0, -0.2], ['W 0.2', -0.2, 0], ['E 0.2', 0.2, 0]].forEach(function (m) {
-      btn(g4, m[0], function () { act(function () { st.setup.c[0] += m[1]; st.setup.c[1] += m[2]; }); });
+    var g4 = group('Slide on tripod head', 'sld', [['5 mm', 5], ['1 mm', 1], ['0.2 mm', 0.2]]);
+    [['N ▲', 0, 1], ['S ▼', 0, -1], ['W ◀', -1, 0], ['E ▶', 1, 0]].forEach(function (m) {
+      btn(g4, m[0], function () { act(function () { st.setup.c[0] += m[1] * STEP.sld; st.setup.c[1] += m[2] * STEP.sld; }); }, '', 'Slide instrument ' + m[0]);
     });
     el.msg = H('p', { class: 'tsim-msg', 'aria-live': 'polite' }, side);
     el.next = H('div', { class: 'tsim-next' }, side);
+    el.reset1 = btn(side, 'Reset set-up (new tripod position)', function () { st.setup = newSetup(); save(); draw1(); }, 'ghost');
     draw1();
   }
   function leg(k, s) {
     act(function () {
-      st.setup.t[0] += 120 * s * U[k][0]; st.setup.t[1] += 120 * s * U[k][1];
-      st.setup.c[0] += (1.5 + noiseR() * 2) * s * U[k][0]; st.setup.c[1] += (1.5 + noiseR() * 2) * s * U[k][1];
+      var a = STEP.leg * 60 * s;
+      st.setup.t[0] += a * U[k][0]; st.setup.t[1] += a * U[k][1];
+      var sh = (0.4 + noiseR() * 0.8) * STEP.leg / 5 * s;
+      st.setup.c[0] += sh * U[k][0]; st.setup.c[1] += sh * U[k][1];
     });
   }
   function screw(k, s) {
     act(function () {
-      st.setup.t[0] += 10 * s * U[k][0]; st.setup.t[1] += 10 * s * U[k][1];
+      var a = STEP.scr * s;
+      st.setup.t[0] += a * U[k][0]; st.setup.t[1] += a * U[k][1];
       // tilting the instrument moves the plummet line on the ground (about 1.5 m × angle)
-      st.setup.c[0] += 1500 * 10 * s * U[k][0] / 206265; st.setup.c[1] += 1500 * 10 * s * U[k][1] / 206265;
+      st.setup.c[0] += 1500 * a * U[k][0] / 206265; st.setup.c[1] += 1500 * a * U[k][1] / 206265;
     });
   }
   function act(fn) {
@@ -271,17 +295,54 @@
     fn(); st.setup.moves++; save(); draw1();
   }
   function msg(t, kind) { if (!el.msg) return; el.msg.textContent = t; el.msg.className = 'tsim-msg' + (kind ? ' ' + kind : ''); }
+  function bubbleWord(t) {
+    var a = w360(90 - Math.atan2(t[1], t[0]) / D2R), best = null, bd = 999;
+    [['A', 240], ['B', 120], ['C', 0]].forEach(function (q) { var d = Math.abs(dang(a - q[1])); if (d < bd) { bd = d; best = q[0]; } });
+    if (bd <= 25) return 'towards screw ' + best;
+    var pair = { A: ['A', 'B', 'C'], B: ['B', 'C', 'A'], C: ['C', 'A', 'B'] }[best];
+    var other = Math.abs(dang(a - { A: 240, B: 120, C: 0 }[pair[1]])) < Math.abs(dang(a - { A: 240, B: 120, C: 0 }[pair[2]])) ? pair[1] : pair[2];
+    return 'between ' + [best, other].sort().join(' and ');
+  }
+  function bestTilt(stepSec) {
+    var t = st.setup.t, best = null;
+    ['A', 'B', 'C'].forEach(function (k) { [1, -1].forEach(function (s) {
+      var v = Math.hypot(t[0] + stepSec * s * U[k][0], t[1] + stepSec * s * U[k][1]);
+      if (!best || v < best.v) best = { v: v, k: k, s: s };
+    }); });
+    return best;
+  }
+  function hint1() {
+    var c = st.setup.c, t = st.setup.t, cm = Math.hypot(c[0], c[1]), tm = Math.hypot(t[0], t[1]);
+    var markDir = compass(-c[0], -c[1]), ax = Math.abs(c[0]) > Math.abs(c[1]) ? (c[0] < 0 ? 'E' : 'W') : (c[1] < 0 ? 'N' : 'S'), comp = Math.max(Math.abs(c[0]), Math.abs(c[1]));
+    if (cm > 25) return 'The mark is ' + cm.toFixed(0) + ' mm to the ' + markDir + ' of the plummet centre: move the tripod ' + ax + (comp > 40 ? ' (50 mm steps).' : ' (10 mm steps).');
+    if (tm > 180) {
+      var stp = tm > 420 ? 5 : 1, b = bestTilt(stp * 60);
+      return 'Bubble is ' + bubbleWord(t) + ' (' + (tm / 60).toFixed(0) + '′ off). Rough-level: make leg ' + b.k + ' ' + (b.s > 0 ? 'longer' : 'shorter') + ' (use ' + stp + '′ steps).';
+    }
+    if (tm > TOL.tilt) {
+      var stp2 = tm > 75 ? 60 : 10, b2 = bestTilt(stp2);
+      return 'Bubble is ' + bubbleWord(t) + ' (' + Math.round(tm) + '″ off). ' + (b2.s > 0 ? 'Raise' : 'Lower') + ' foot screw ' + b2.k + ' (use ' + (stp2 === 60 ? '1′' : '10″') + ' steps): the bubble moves ' + (b2.s > 0 ? 'towards' : 'away from') + ' ' + b2.k + '.';
+    }
+    if (cm > TOL.centre) return 'Level is good. The mark is ' + cm.toFixed(1) + ' mm to the ' + markDir + ': slide the instrument ' + ax + (comp > 4 ? ' (5 mm steps).' : comp > 1.2 ? ' (1 mm steps).' : ' (0.2 mm steps).');
+    return '';
+  }
   function draw1() {
     var c = st.setup.c, t = st.setup.t, cm = Math.hypot(c[0], c[1]), tm = Math.hypot(t[0], t[1]);
     // plummet: the mark appears at −c (plummet is the centre); 4 px per mm, view ±25 mm
     clear(el.plum);
     S('circle', { cx: 120, cy: 120, r: 110, fill: C.so, stroke: C.b }, el.plum);
     var k = 4, mx = 120 - c[0] * k, my = 120 + c[1] * k;
-    S('rect', { x: Math.max(14, Math.min(226, mx)) - 9, y: Math.max(14, Math.min(226, my)) - 9, width: 18, height: 18, fill: C.f, opacity: 0.35 }, el.plum);
-    if (Math.abs(mx - 120) < 110 && Math.abs(my - 120) < 110) {
+    if (Math.hypot(mx - 120, my - 120) < 104) {
+      S('rect', { x: mx - 9, y: my - 9, width: 18, height: 18, fill: C.f, opacity: 0.35 }, el.plum);
       S('line', { x1: mx - 7, y1: my, x2: mx + 7, y2: my, stroke: C.t, 'stroke-width': 2 }, el.plum);
       S('line', { x1: mx, y1: my - 7, x2: mx, y2: my + 7, stroke: C.t, 'stroke-width': 2 }, el.plum);
-    } else T(el.plum, 120, 228, 'mark out of view: move the tripod', { 'text-anchor': 'middle', fill: C.d, 'font-size': 11 });
+    } else {
+      var ux = -c[0] / cm, uy = c[1] / cm, ex = 120 + ux * 96, ey = 120 + uy * 96;
+      S('line', { x1: 120 + ux * 40, y1: 120 + uy * 40, x2: ex, y2: ey, stroke: C.d, 'stroke-width': 3 }, el.plum);
+      var ang = Math.atan2(uy, ux) / D2R;
+      S('path', { d: 'M0 -8 L14 0 L0 8 z', fill: C.d, transform: 'translate(' + ex + ' ' + ey + ') rotate(' + ang + ')' }, el.plum);
+      T(el.plum, 120, 228, 'mark ' + cm.toFixed(0) + ' mm to the ' + compass(-c[0], -c[1]) + ': move the tripod', { 'text-anchor': 'middle', fill: C.d, 'font-size': 11 });
+    }
     S('circle', { cx: 120, cy: 120, r: TOL.centre * k * 4, fill: 'none', stroke: C.p, 'stroke-width': 1.5 }, el.plum);
     S('circle', { cx: 120, cy: 120, r: TOL.centre * k, fill: 'none', stroke: C.p, 'stroke-width': 1 }, el.plum);
     T(el.plum, 120, 16, 'N', { 'text-anchor': 'middle', 'font-size': 11 });
@@ -298,17 +359,22 @@
       T(el.bub, x, y + 4, q[0], { 'text-anchor': 'middle', fill: C.sf, 'font-size': 11, 'font-weight': 700 });
     });
     el.lcd1.innerHTML = 'Tilt N–S: ' + esc(dms(t[1] * SEC, true)) + '<br>Tilt E–W: ' + esc(dms(t[0] * SEC, true)) +
+      '<br>Bubble: ' + (tm <= TOL.tilt ? '<span class="ok">centred</span>' : esc(bubbleWord(t))) +
       '<br>Centring error: ' + cm.toFixed(1) + ' mm<br>Moves: ' + st.setup.moves +
       '<br>Compensator: ' + (tm <= 180 ? '<span class="ok">in range</span>' : '<span class="bad">out of range</span>');
     var ok = cm <= TOL.centre && tm <= TOL.tilt;
     if (ok && !st.done[1]) { st.done[1] = true; st.setupResult = { moves: st.setup.moves, centre: r3(cm), tilt: Math.round(tm) }; save(); }
     clear(el.next);
+    el.reset1.style.display = st.done[1] ? 'none' : '';
+    var h = st.done[1] ? '' : hint1();
+    el.coach.textContent = st.coach === false || !h ? '' : 'Coach: ' + h;
+    el.coach.style.display = st.coach === false || !h ? 'none' : '';
     if (st.done[1]) {
       msg('Set-up complete in ' + st.setupResult.moves + ' moves: centred to ' + st.setupResult.centre.toFixed(1) + ' mm and levelled to ' + st.setupResult.tilt + '″.', 's');
       H('div', { class: 'tsim-tape', html: '<b>Now measure the instrument height with the tape.</b> From the station mark to the trunnion-axis mark the tape reads <span class="big">HI = ' + site.hi.toFixed(3) + ' m</span>. Write it in your field book: you will need it in stage 2.' }, el.next);
       btn(el.next, 'Go to stage 2 →', function () { go(2); }, 'primary');
       go_steps();
-    } else msg(cm > 25 ? 'Start with rough centring: move the tripod.' : tm > 180 ? 'Now rough-level with the tripod legs until the compensator is in range.' : 'Fine level with the foot screws and fine centre by sliding on the tripod head.');
+    } else msg('Centring ' + cm.toFixed(1) + ' mm (need ≤ 1 mm) · tilt ' + (tm >= 60 ? (tm / 60).toFixed(1) + '′' : Math.round(tm) + '″') + ' (need ≤ 30″).');
   }
   function go_steps() { Array.prototype.forEach.call(el.steps.querySelectorAll('button'), function (b) { var k = +b.getAttribute('data-stage'); b.disabled = !unlocked(k); b.classList.toggle('done', !!st.done[k]); }); }
 
