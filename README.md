@@ -14,7 +14,9 @@ A static, multi-page website presenting Course Outcome (CO)-wise e-content for *
 | `co5.html` | CO5 — Mapping: fundamentals, WGS84/UTM, software, automated mapping, control points, detailing |
 | `references.html` | Prescribed text books + CO-wise additional reference books |
 
-Assets live in `css/style.css`, `js/script.js`, `js/quiz.js` (Quick Check quizzes) and `js/interactives.js` (the "Try it" concept visuals: whole-to-part, satellite geometry/DOP, multipath, DGPS base and rover, GPS loop closure, total station height explorer, face left/right, TIN to contours, UTM zones of India). Each visual is a `<figure data-ia="name">` placeholder in the CO page; motion is skipped when the reader's device asks for reduced motion. The site is plain HTML/CSS/JS — no build step, no dependencies.
+Assets live in `css/style.css`, `js/script.js`, `js/quiz.js` (Quick Check quizzes) and `js/interactives.js` (the "Try it" concept visuals: whole-to-part, satellite geometry/DOP, multipath, DGPS base and rover, GPS loop closure, total station height explorer, face left/right, TIN to contours, UTM zones of India). Each visual is a `<figure data-ia="name">` placeholder in the CO page; motion is skipped when the reader's device asks for reduced motion.
+
+`virtual-lab.html` + `js/ts-sim.js` is the **Virtual Lab: total station practical** in four stages (set up: centring and levelling; station setup, orientation and backsight check; detail survey with codes and CSV export for QGIS; setting out four building corners with a diagonal check). Each roll number gets its own seeded site; progress is kept in the browser's localStorage; students print a lab record at the end. Instrument model: ±(2 mm + 2 ppm), 2″. The site is plain HTML/CSS/JS — no build step, no dependencies.
 
 ## Running locally
 
