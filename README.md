@@ -51,3 +51,5 @@ Course Outcomes are quoted verbatim from the BTCVE802T syllabus. External furthe
 ## Developer
 
 Developed by **Daipayan Mandal**, Assistant Professor, Department of Civil Engineering, Kavikulguru Institute of Technology and Science (KITS), Ramtek.
+
+**After changing CSS or JS:** raise the `?v=` number on the `<link>` and `<script>` tags in every page (for example `style.css?v=20261127`), so that browsers load the new file instead of an old saved copy.
